@@ -1,19 +1,29 @@
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
   box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+
+  -webkit-tap-highlight-color:
+    transparent;
 }
 
 html,
 body {
+
   width: 100%;
   height: 100%;
+
   margin: 0;
 }
 
 body {
+
   overflow: hidden;
 
   display: flex;
+
   justify-content: center;
   align-items: center;
 
@@ -33,13 +43,98 @@ body {
 
 
 /* =====================================================
+   LOADING
+===================================================== */
+
+#loadingScreen {
+
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle,
+      #fffafd,
+      #ffe5f0
+    );
+
+  z-index: 999;
+
+  transition:
+    opacity .8s ease,
+    visibility .8s ease;
+}
+
+#loadingScreen.hide {
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+.loading-heart {
+
+  font-size: 48px;
+
+  color: #ed78a4;
+
+  animation:
+    loadingHeart
+    1.2s
+    ease-in-out
+    infinite;
+}
+
+@keyframes loadingHeart {
+
+  0%,
+  100% {
+
+    transform:
+      scale(1);
+
+  }
+
+  50% {
+
+    transform:
+      scale(1.18);
+
+  }
+}
+
+.loading-text {
+
+  margin-top: 12px;
+
+  color: #9b526f;
+
+  font-size: 15px;
+
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
    HINT
 ===================================================== */
 
 .hint {
+
   position: fixed;
 
   top: 12%;
+
   width: 100%;
 
   text-align: center;
@@ -47,6 +142,7 @@ body {
   color: #9b526f;
 
   font-size: 18px;
+
   font-weight: 600;
 
   letter-spacing: 1px;
@@ -63,6 +159,7 @@ body {
 ===================================================== */
 
 .cat-envelope {
+
   position: relative;
 
   width: 270px;
@@ -83,6 +180,7 @@ body {
 ===================================================== */
 
 .cat-ear {
+
   position: absolute;
 
   top: 5px;
@@ -105,7 +203,8 @@ body {
 
   z-index: 1;
 
-  transform: rotate(45deg);
+  transform:
+    rotate(45deg);
 
   box-shadow:
     0 5px 15px
@@ -117,12 +216,15 @@ body {
 }
 
 .ear-right {
+
   right: 18px;
 
-  transform: rotate(-45deg);
+  transform:
+    rotate(-45deg);
 }
 
 .inner-ear {
+
   position: absolute;
 
   width: 42px;
@@ -148,6 +250,7 @@ body {
 ===================================================== */
 
 .envelope-body {
+
   position: absolute;
 
   left: 15px;
@@ -175,6 +278,7 @@ body {
 }
 
 .envelope-front {
+
   position: absolute;
 
   inset: 0;
@@ -195,6 +299,7 @@ body {
 ===================================================== */
 
 .envelope-fold {
+
   position: absolute;
 
   bottom: 0;
@@ -210,6 +315,7 @@ body {
 }
 
 .left-fold {
+
   left: 0;
 
   border-right:
@@ -217,6 +323,7 @@ body {
 }
 
 .right-fold {
+
   right: 0;
 
   border-left:
@@ -229,6 +336,7 @@ body {
 ===================================================== */
 
 .cat-flap {
+
   position: absolute;
 
   left: 15px;
@@ -251,7 +359,8 @@ body {
       50% 100%
     );
 
-  transform-origin: top center;
+  transform-origin:
+    top center;
 
   transition:
     transform .9s
@@ -267,6 +376,7 @@ body {
 }
 
 .cat-envelope.open .cat-flap {
+
   transform:
     rotateX(180deg);
 }
@@ -277,6 +387,7 @@ body {
 ===================================================== */
 
 .cat-face {
+
   position: absolute;
 
   top: 30px;
@@ -290,6 +401,7 @@ body {
 }
 
 .cat-eye {
+
   position: absolute;
 
   top: 25px;
@@ -311,6 +423,7 @@ body {
 }
 
 .cat-eye::after {
+
   content: "";
 
   position: absolute;
@@ -332,6 +445,7 @@ body {
 ===================================================== */
 
 .cat-blush {
+
   position: absolute;
 
   top: 50px;
@@ -360,6 +474,7 @@ body {
 ===================================================== */
 
 .cat-nose {
+
   position: absolute;
 
   top: 47px;
@@ -387,6 +502,7 @@ body {
 ===================================================== */
 
 .cat-mouth {
+
   position: absolute;
 
   top: 57px;
@@ -401,6 +517,7 @@ body {
 }
 
 .left-mouth {
+
   left: 49px;
 
   transform:
@@ -408,6 +525,7 @@ body {
 }
 
 .right-mouth {
+
   left: 59px;
 
   transform:
@@ -420,6 +538,7 @@ body {
 ===================================================== */
 
 .whisker {
+
   position: absolute;
 
   width: 35px;
@@ -431,6 +550,7 @@ body {
 }
 
 .whisker-1 {
+
   left: -4px;
   top: 45px;
 
@@ -439,6 +559,7 @@ body {
 }
 
 .whisker-2 {
+
   left: -4px;
   top: 54px;
 
@@ -447,6 +568,7 @@ body {
 }
 
 .whisker-3 {
+
   right: -4px;
   top: 45px;
 
@@ -455,6 +577,7 @@ body {
 }
 
 .whisker-4 {
+
   right: -4px;
   top: 54px;
 
@@ -468,6 +591,7 @@ body {
 ===================================================== */
 
 .cat-paw {
+
   position: absolute;
 
   bottom: 3px;
@@ -489,12 +613,14 @@ body {
 }
 
 .cat-envelope.open .paw-left {
+
   transform:
     translateY(-18px)
     rotate(-8deg);
 }
 
 .cat-envelope.open .paw-right {
+
   transform:
     translateY(-18px)
     rotate(8deg);
@@ -506,6 +632,7 @@ body {
 ===================================================== */
 
 #flowerLayer {
+
   position: fixed;
 
   inset: 0;
@@ -526,10 +653,12 @@ body {
 }
 
 #flowerLayer.fade-out {
+
   opacity: 0;
 }
 
 .flower {
+
   position: absolute;
 
   left: 50%;
@@ -558,6 +687,7 @@ body {
 @keyframes flowerBurst {
 
   0% {
+
     opacity: 0;
 
     transform:
@@ -571,6 +701,7 @@ body {
   }
 
   100% {
+
     opacity: 1;
 
     transform:
@@ -585,10 +716,11 @@ body {
 
 
 /* =====================================================
-   IMAGE VIEWER
+   IMAGE
 ===================================================== */
 
 #viewer {
+
   position: fixed;
 
   left: 50%;
@@ -622,11 +754,13 @@ body {
     rgba(110, 45, 80, .18);
 
   transition:
-    opacity .4s ease,
-    transform .4s ease;
+    opacity .45s ease,
+    transform .55s ease,
+    filter .45s ease;
 }
 
 #viewer.show {
+
   opacity: 1;
 
   transform:
@@ -636,10 +770,100 @@ body {
 
 
 /* =====================================================
+   IMAGE CAPTION
+===================================================== */
+
+.image-caption {
+
+  position: fixed;
+
+  left: 50%;
+
+  bottom: 8%;
+
+  transform:
+    translateX(-50%)
+    translateY(10px);
+
+  width: 90%;
+
+  text-align: center;
+
+  color: #81465e;
+
+  font-size: 17px;
+
+  font-weight: 500;
+
+  letter-spacing: .3px;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: 45;
+
+  transition:
+    opacity .5s ease,
+    transform .5s ease;
+}
+
+.image-caption.show {
+
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =====================================================
+   DIFFERENT IMAGE EFFECTS
+===================================================== */
+
+#viewer.effect-1 {
+
+  filter:
+    blur(0);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.04);
+}
+
+#viewer.effect-2 {
+
+  transform:
+    translate(-50%, -50%)
+    translateX(25px)
+    scale(.98);
+}
+
+#viewer.effect-3 {
+
+  filter:
+    blur(4px);
+
+  transform:
+    translate(-50%, -50%)
+    scale(.97);
+}
+
+#viewer.effect-4 {
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.06);
+}
+
+
+/* =====================================================
    VIDEO
 ===================================================== */
 
 #videoViewer {
+
   position: fixed;
 
   left: 50%;
@@ -674,11 +898,12 @@ body {
   z-index: 50;
 
   transition:
-    opacity .6s ease,
-    transform .6s ease;
+    opacity .7s ease,
+    transform .7s ease;
 }
 
 #videoViewer.video-show {
+
   opacity: 1;
 
   visibility: visible;
@@ -690,10 +915,44 @@ body {
 
 
 /* =====================================================
+   VIDEO FADE
+===================================================== */
+
+#videoFade {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: #fff5fa;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  z-index: 70;
+
+  transition:
+    opacity .8s ease,
+    visibility .8s ease;
+}
+
+#videoFade.active {
+
+  opacity: 1;
+
+  visibility: visible;
+}
+
+
+/* =====================================================
    QUESTION
 ===================================================== */
 
 .question-box {
+
   position: fixed;
 
   inset: 0;
@@ -707,13 +966,46 @@ body {
     rgba(255, 235, 245, .78);
 
   backdrop-filter:
-    blur(8px);
+    blur(10px);
 
   z-index: 80;
+
+  opacity: 0;
 }
 
+.question-box.show {
+
+  animation:
+    questionAppear
+    .9s
+    ease
+    forwards;
+}
+
+@keyframes questionAppear {
+
+  from {
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+}
+
+
+/* =====================================================
+   QUESTION CARD
+===================================================== */
+
 .question-card {
-  width: min(88vw, 390px);
+
+  width:
+    min(88vw, 390px);
 
   padding:
     28px
@@ -731,37 +1023,66 @@ body {
     0 20px 70px
     rgba(150, 65, 105, .2);
 
+  transform:
+    translateY(30px)
+    scale(.92);
+
   animation:
-    cardAppear .7s ease;
+    questionCard
+    .8s
+    .15s
+    ease
+    forwards;
 }
 
-@keyframes cardAppear {
-
-  from {
-    opacity: 0;
-
-    transform:
-      scale(.8)
-      translateY(20px);
-  }
+@keyframes questionCard {
 
   to {
-    opacity: 1;
 
     transform:
-      scale(1)
-      translateY(0);
+      translateY(0)
+      scale(1);
+
   }
 }
 
 .butterfly {
+
   width: 130px;
+
   max-width: 60%;
 
   margin-bottom: 10px;
+
+  animation:
+    butterflyFloat
+    3s
+    ease-in-out
+    infinite;
+}
+
+@keyframes butterflyFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translateY(0)
+      rotate(-2deg);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-7px)
+      rotate(2deg);
+
+  }
 }
 
 .question-text {
+
   margin:
     8px
     0
@@ -774,6 +1095,34 @@ body {
   font-weight: 600;
 
   line-height: 1.5;
+
+  animation:
+    textAppear
+    .7s
+    .3s
+    ease
+    both;
+}
+
+@keyframes textAppear {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
 }
 
 
@@ -782,6 +1131,7 @@ body {
 ===================================================== */
 
 .buttons {
+
   display: flex;
 
   justify-content: center;
@@ -790,6 +1140,7 @@ body {
 }
 
 .buttons button {
+
   min-width: 105px;
 
   padding:
@@ -811,6 +1162,7 @@ body {
 }
 
 #yesBtn {
+
   background:
     linear-gradient(
       135deg,
@@ -823,15 +1175,42 @@ body {
   box-shadow:
     0 8px 20px
     rgba(255, 95, 153, .25);
+
+  animation:
+    yesPulse
+    2.5s
+    1s
+    ease-in-out
+    infinite;
+}
+
+@keyframes yesPulse {
+
+  0%,
+  100% {
+
+    transform:
+      scale(1);
+
+  }
+
+  50% {
+
+    transform:
+      scale(1.04);
+
+  }
 }
 
 #yesBtn:hover {
+
   transform:
     translateY(-2px)
     scale(1.03);
 }
 
 #noBtn {
+
   background: #eee;
 
   color: #aaa;
@@ -845,6 +1224,7 @@ body {
 ===================================================== */
 
 .final-box {
+
   position: fixed;
 
   inset: 0;
@@ -870,28 +1250,36 @@ body {
   z-index: 90;
 
   animation:
-    finalAppear .8s ease;
+    finalAppear
+    .8s
+    ease;
 }
 
 @keyframes finalAppear {
 
   from {
+
     opacity: 0;
 
     transform:
       scale(.95);
+
   }
 
   to {
+
     opacity: 1;
 
     transform:
       scale(1);
+
   }
 }
 
 .final-box img {
-  width: min(270px, 70vw);
+
+  width:
+    min(270px, 70vw);
 
   max-height: 45vh;
 
@@ -907,6 +1295,7 @@ body {
 }
 
 .final-box p {
+
   max-width: 500px;
 
   margin: 0;
@@ -919,6 +1308,7 @@ body {
 }
 
 .final-box b {
+
   color: #e85d91;
 }
 
@@ -930,6 +1320,7 @@ body {
 @media (max-width: 600px) {
 
   .hint {
+
     top: 11%;
 
     font-size: 16px;
@@ -937,12 +1328,14 @@ body {
 
 
   .cat-envelope {
+
     transform:
       scale(.9);
   }
 
 
   #viewer {
+
     max-width: 92vw;
 
     max-height: 72vh;
@@ -951,10 +1344,16 @@ body {
   }
 
 
-  /*
-    VIDEO TRÊN ĐIỆN THOẠI
+  .image-caption {
 
-    Phủ kín toàn bộ viewport.
+    bottom: 7%;
+
+    font-size: 15px;
+  }
+
+
+  /*
+    VIDEO FULL MOBILE
   */
 
   #videoViewer {
@@ -975,16 +1374,6 @@ body {
     object-fit: cover;
 
     background: #000;
-
-    /*
-      Hỗ trợ điện thoại có tai thỏ
-    */
-
-    padding:
-      env(safe-area-inset-top)
-      env(safe-area-inset-right)
-      env(safe-area-inset-bottom)
-      env(safe-area-inset-left);
   }
 
 
@@ -1003,6 +1392,7 @@ body {
 
 
   .question-card {
+
     padding:
       25px
       20px
@@ -1011,17 +1401,19 @@ body {
 
 
   .question-text {
+
     font-size: 18px;
   }
 
 
   .final-box {
-    padding:
-      25px;
+
+    padding: 25px;
   }
 
 
   .final-box p {
+
     font-size: 16px;
   }
 
