@@ -382,99 +382,72 @@ function playVideo() {
 
   stage = 5;
 
-
-  /* Dừng nhạc nền */
-
+  // Dừng nhạc nền
   bgMusic.pause();
 
+  // Hiện video trước
+  videoViewer.style.display = "block";
 
-  /* Đưa video về đầu */
+  videoViewer.classList.remove("video-show");
 
+  // Đưa video về đầu
   videoViewer.currentTime = 0;
 
+  // Load lại video
+  videoViewer.load();
 
-  videoViewer.style.display =
-    "block";
+  // Khi video đã sẵn sàng
+  videoViewer.oncanplay = () => {
 
+    videoViewer.classList.add("video-show");
 
-  videoViewer.classList.remove(
-    "video-show"
-  );
-
-
-  /*
-    Play ngay trong chuỗi click
-    của người dùng.
-    Vì vậy video có thể có tiếng
-    mà ít bị trình duyệt chặn.
-  */
-
-  const playPromise =
-    videoViewer.play();
-
-
-  if (
-    playPromise !== undefined
-  ) {
-
-    playPromise
+    videoViewer.play()
       .then(() => {
 
-        setTimeout(() => {
-
-          videoViewer.classList.add(
-            "video-show"
-          );
-
-        }, 50);
+        console.log("Video đang chạy");
 
       })
-      .catch(() => {
+      .catch((error) => {
 
-        /*
-          Nếu trình duyệt vẫn chặn,
-          hiện video nhưng không làm
-          hỏng flow.
-        */
+        console.log(
+          "Không thể tự phát video:",
+          error
+        );
 
+        // Thử phát không tiếng
         videoViewer.muted = true;
 
         videoViewer.play();
 
-        setTimeout(() => {
-
-          videoViewer.classList.add(
-            "video-show"
-          );
-
-        }, 50);
-
       });
 
-  }
-
+  };
 }
 
 
-/* =====================================================
-   VIDEO ENDED
-===================================================== */
+/* =========================
+   VIDEO KẾT THÚC
+========================= */
 
 videoViewer.onended = () => {
-
-  /* Fade video */
 
   videoViewer.classList.remove(
     "video-show"
   );
-
 
   setTimeout(() => {
 
     videoViewer.pause();
 
-    videoViewer.style.display =
-      "none";
+    videoViewer.style.display = "none";
+
+    questionBox.style.display = "flex";
+
+    stage = 4;
+
+  }, 600);
+
+};
 
 
     /* Hiện câu hỏi */
