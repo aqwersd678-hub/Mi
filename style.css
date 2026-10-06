@@ -40,7 +40,6 @@ body {
   position: fixed;
 
   top: 12%;
-
   width: 100%;
 
   text-align: center;
@@ -64,7 +63,6 @@ body {
 ===================================================== */
 
 .cat-envelope {
-
   position: relative;
 
   width: 270px;
@@ -81,11 +79,10 @@ body {
 
 
 /* =====================================================
-   CAT EARS
+   EARS
 ===================================================== */
 
 .cat-ear {
-
   position: absolute;
 
   top: 5px;
@@ -108,29 +105,24 @@ body {
 
   z-index: 1;
 
-  transform:
-    rotate(45deg);
+  transform: rotate(45deg);
 
   box-shadow:
-    0 5px 15px rgba(190, 75, 120, .12);
+    0 5px 15px
+    rgba(190, 75, 120, .12);
 }
-
 
 .ear-left {
   left: 18px;
 }
 
-
 .ear-right {
   right: 18px;
 
-  transform:
-    rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
-
 .inner-ear {
-
   position: absolute;
 
   width: 42px;
@@ -156,7 +148,6 @@ body {
 ===================================================== */
 
 .envelope-body {
-
   position: absolute;
 
   left: 15px;
@@ -175,18 +166,15 @@ body {
   border-radius: 20px;
 
   box-shadow:
-    0 15px 35px rgba(185, 82, 125, .18);
+    0 15px 35px
+    rgba(185, 82, 125, .18);
 
   overflow: hidden;
 
   z-index: 3;
 }
 
-
-/* Mặt trước */
-
 .envelope-front {
-
   position: absolute;
 
   inset: 0;
@@ -207,7 +195,6 @@ body {
 ===================================================== */
 
 .envelope-fold {
-
   position: absolute;
 
   bottom: 0;
@@ -218,21 +205,18 @@ body {
   z-index: 4;
 
   border-bottom:
-    105px solid rgba(255, 190, 214, .55);
+    105px solid
+    rgba(255, 190, 214, .55);
 }
 
-
 .left-fold {
-
   left: 0;
 
   border-right:
     120px solid transparent;
 }
 
-
 .right-fold {
-
   right: 0;
 
   border-left:
@@ -245,7 +229,6 @@ body {
 ===================================================== */
 
 .cat-flap {
-
   position: absolute;
 
   left: 15px;
@@ -268,11 +251,11 @@ body {
       50% 100%
     );
 
-  transform-origin:
-    top center;
+  transform-origin: top center;
 
   transition:
-    transform .9s cubic-bezier(.2,.8,.2,1);
+    transform .9s
+    cubic-bezier(.2,.8,.2,1);
 
   z-index: 8;
 
@@ -283,14 +266,9 @@ body {
     );
 }
 
-
-/* mở nắp */
-
 .cat-envelope.open .cat-flap {
-
   transform:
     rotateX(180deg);
-
 }
 
 
@@ -299,7 +277,6 @@ body {
 ===================================================== */
 
 .cat-face {
-
   position: absolute;
 
   top: 30px;
@@ -310,14 +287,9 @@ body {
 
   transform:
     translateX(-50%);
-
 }
 
-
-/* Mắt */
-
 .cat-eye {
-
   position: absolute;
 
   top: 25px;
@@ -330,21 +302,15 @@ body {
   border-radius: 50%;
 }
 
-
 .eye-left {
   left: 28px;
 }
-
 
 .eye-right {
   right: 28px;
 }
 
-
-/* Mắt sáng */
-
 .cat-eye::after {
-
   content: "";
 
   position: absolute;
@@ -361,10 +327,11 @@ body {
 }
 
 
-/* Má */
+/* =====================================================
+   BLUSH
+===================================================== */
 
 .cat-blush {
-
   position: absolute;
 
   top: 50px;
@@ -379,21 +346,20 @@ body {
   opacity: .45;
 }
 
-
 .blush-left {
   left: 10px;
 }
-
 
 .blush-right {
   right: 10px;
 }
 
 
-/* Mũi */
+/* =====================================================
+   NOSE
+===================================================== */
 
 .cat-nose {
-
   position: absolute;
 
   top: 47px;
@@ -416,10 +382,11 @@ body {
 }
 
 
-/* Miệng */
+/* =====================================================
+   MOUTH
+===================================================== */
 
 .cat-mouth {
-
   position: absolute;
 
   top: 57px;
@@ -433,14 +400,12 @@ body {
   border-radius: 50%;
 }
 
-
 .left-mouth {
   left: 49px;
 
   transform:
     rotate(25deg);
 }
-
 
 .right-mouth {
   left: 59px;
@@ -455,7 +420,6 @@ body {
 ===================================================== */
 
 .whisker {
-
   position: absolute;
 
   width: 35px;
@@ -466,32 +430,36 @@ body {
   opacity: .7;
 }
 
-
 .whisker-1 {
   left: -4px;
   top: 45px;
-  transform: rotate(10deg);
-}
 
+  transform:
+    rotate(10deg);
+}
 
 .whisker-2 {
   left: -4px;
   top: 54px;
-  transform: rotate(-5deg);
-}
 
+  transform:
+    rotate(-5deg);
+}
 
 .whisker-3 {
   right: -4px;
   top: 45px;
-  transform: rotate(-10deg);
-}
 
+  transform:
+    rotate(-10deg);
+}
 
 .whisker-4 {
   right: -4px;
   top: 54px;
-  transform: rotate(5deg);
+
+  transform:
+    rotate(5deg);
 }
 
 
@@ -500,7 +468,6 @@ body {
 ===================================================== */
 
 .cat-paw {
-
   position: absolute;
 
   bottom: 3px;
@@ -513,23 +480,19 @@ body {
     transform .5s ease;
 }
 
-
 .paw-left {
   left: 65px;
 }
 
-
 .paw-right {
   right: 65px;
 }
-
 
 .cat-envelope.open .paw-left {
   transform:
     translateY(-18px)
     rotate(-8deg);
 }
-
 
 .cat-envelope.open .paw-right {
   transform:
@@ -539,11 +502,10 @@ body {
 
 
 /* =====================================================
-   FLOWER LAYER
+   FLOWERS
 ===================================================== */
 
 #flowerLayer {
-
   position: fixed;
 
   inset: 0;
@@ -563,18 +525,11 @@ body {
     opacity 1s ease;
 }
 
-
 #flowerLayer.fade-out {
   opacity: 0;
 }
 
-
-/* =====================================================
-   FLOWERS
-===================================================== */
-
 .flower {
-
   position: absolute;
 
   left: 50%;
@@ -600,28 +555,22 @@ body {
   user-select: none;
 }
 
-
 @keyframes flowerBurst {
 
   0% {
-
     opacity: 0;
 
     transform:
       translate(-50%, -50%)
       scale(.1)
       rotate(0deg);
-
   }
 
   15% {
-
     opacity: 1;
-
   }
 
   100% {
-
     opacity: 1;
 
     transform:
@@ -631,7 +580,6 @@ body {
       )
       scale(1)
       rotate(var(--rotate));
-
   }
 }
 
@@ -641,7 +589,6 @@ body {
 ===================================================== */
 
 #viewer {
-
   position: fixed;
 
   left: 50%;
@@ -657,6 +604,8 @@ body {
     scale(.94);
 
   opacity: 0;
+
+  visibility: hidden;
 
   display: none;
 
@@ -677,9 +626,7 @@ body {
     transform .4s ease;
 }
 
-
 #viewer.show {
-
   opacity: 1;
 
   transform:
@@ -693,7 +640,6 @@ body {
 ===================================================== */
 
 #videoViewer {
-
   position: fixed;
 
   left: 50%;
@@ -705,15 +651,19 @@ body {
   max-width: 92vw;
   max-height: 86vh;
 
-  transform:
-    translate(-50%, -50%)
-    scale(.96);
-
   display: none;
 
   opacity: 0;
 
+  visibility: hidden;
+
+  transform:
+    translate(-50%, -50%)
+    scale(.96);
+
   object-fit: contain;
+
+  background: #000;
 
   border-radius: 20px;
 
@@ -728,10 +678,10 @@ body {
     transform .6s ease;
 }
 
-
 #videoViewer.video-show {
-
   opacity: 1;
+
+  visibility: visible;
 
   transform:
     translate(-50%, -50%)
@@ -740,11 +690,10 @@ body {
 
 
 /* =====================================================
-   QUESTION BOX
+   QUESTION
 ===================================================== */
 
 .question-box {
-
   position: fixed;
 
   inset: 0;
@@ -763,12 +712,13 @@ body {
   z-index: 80;
 }
 
-
 .question-card {
-
   width: min(88vw, 390px);
 
-  padding: 28px 24px 30px;
+  padding:
+    28px
+    24px
+    30px;
 
   text-align: center;
 
@@ -785,47 +735,37 @@ body {
     cardAppear .7s ease;
 }
 
-
 @keyframes cardAppear {
 
   from {
-
     opacity: 0;
 
     transform:
       scale(.8)
       translateY(20px);
-
   }
 
   to {
-
     opacity: 1;
 
     transform:
       scale(1)
       translateY(0);
-
   }
 }
 
-
-/* Ảnh 6 */
-
 .butterfly {
-
   width: 130px;
   max-width: 60%;
 
   margin-bottom: 10px;
 }
 
-
-/* Câu hỏi */
-
 .question-text {
-
-  margin: 8px 0 22px;
+  margin:
+    8px
+    0
+    22px;
 
   color: #713d53;
 
@@ -842,7 +782,6 @@ body {
 ===================================================== */
 
 .buttons {
-
   display: flex;
 
   justify-content: center;
@@ -850,12 +789,12 @@ body {
   gap: 14px;
 }
 
-
 .buttons button {
-
   min-width: 105px;
 
-  padding: 11px 20px;
+  padding:
+    11px
+    20px;
 
   border: none;
 
@@ -871,9 +810,7 @@ body {
     transform .2s ease;
 }
 
-
 #yesBtn {
-
   background:
     linear-gradient(
       135deg,
@@ -888,17 +825,13 @@ body {
     rgba(255, 95, 153, .25);
 }
 
-
 #yesBtn:hover {
-
   transform:
     translateY(-2px)
     scale(1.03);
 }
 
-
 #noBtn {
-
   background: #eee;
 
   color: #aaa;
@@ -908,11 +841,10 @@ body {
 
 
 /* =====================================================
-   FINAL BOX
+   FINAL
 ===================================================== */
 
 .final-box {
-
   position: fixed;
 
   inset: 0;
@@ -941,31 +873,24 @@ body {
     finalAppear .8s ease;
 }
 
-
 @keyframes finalAppear {
 
   from {
-
     opacity: 0;
 
     transform:
       scale(.95);
-
   }
 
   to {
-
     opacity: 1;
 
     transform:
       scale(1);
-
   }
 }
 
-
 .final-box img {
-
   width: min(270px, 70vw);
 
   max-height: 45vh;
@@ -981,9 +906,7 @@ body {
     );
 }
 
-
 .final-box p {
-
   max-width: 500px;
 
   margin: 0;
@@ -995,9 +918,7 @@ body {
   line-height: 1.7;
 }
 
-
 .final-box b {
-
   color: #e85d91;
 }
 
@@ -1009,65 +930,99 @@ body {
 @media (max-width: 600px) {
 
   .hint {
-
     top: 11%;
 
     font-size: 16px;
-
   }
 
 
   .cat-envelope {
-
     transform:
       scale(.9);
-
   }
 
 
   #viewer {
-
     max-width: 92vw;
 
     max-height: 72vh;
 
     border-radius: 14px;
-
   }
 
 
+  /*
+    VIDEO TRÊN ĐIỆN THOẠI
+
+    Phủ kín toàn bộ viewport.
+  */
+
   #videoViewer {
 
-    max-width: 94vw;
+    width: 100vw;
+    height: 100vh;
 
-    max-height: 78vh;
+    width: 100dvw;
+    height: 100dvh;
 
-    border-radius: 16px;
+    max-width: none;
+    max-height: none;
 
+    border-radius: 0;
+
+    box-shadow: none;
+
+    object-fit: cover;
+
+    background: #000;
+
+    /*
+      Hỗ trợ điện thoại có tai thỏ
+    */
+
+    padding:
+      env(safe-area-inset-top)
+      env(safe-area-inset-right)
+      env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
+  }
+
+
+  #videoViewer.video-show {
+
+    width: 100vw;
+    height: 100vh;
+
+    width: 100dvw;
+    height: 100dvh;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
   }
 
 
   .question-card {
-
     padding:
       25px
       20px
       28px;
-
   }
 
 
   .question-text {
-
     font-size: 18px;
+  }
 
+
+  .final-box {
+    padding:
+      25px;
   }
 
 
   .final-box p {
-
     font-size: 16px;
-
   }
 
 }
