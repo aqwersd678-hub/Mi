@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -15,20 +16,38 @@
 
 <body>
 
-  <!-- =========================
+  <!-- =========================================
+       LOADING
+  ========================================== -->
+
+  <div id="loadingScreen">
+
+    <div class="loading-heart">♡</div>
+
+    <div class="loading-text">
+      đang chuẩn bị một chút...
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
        HINT
-  ========================== -->
+  ========================================== -->
 
   <div class="hint">
     phải mở thui
   </div>
 
 
-  <!-- =========================
+  <!-- =========================================
        CAT ENVELOPE
-  ========================== -->
+  ========================================== -->
 
-  <div class="cat-envelope" id="envelope">
+  <div
+    class="cat-envelope"
+    id="envelope"
+  >
 
     <div class="cat-ear ear-left">
       <div class="inner-ear"></div>
@@ -75,38 +94,45 @@
     </div>
 
 
-    <div class="cat-paw paw-left">🐾</div>
-    <div class="cat-paw paw-right">🐾</div>
+    <div class="cat-paw paw-left">
+      🐾
+    </div>
+
+    <div class="cat-paw paw-right">
+      🐾
+    </div>
 
   </div>
 
 
-  <!-- =========================
+  <!-- =========================================
        FLOWERS
-  ========================== -->
+  ========================================== -->
 
   <div id="flowerLayer"></div>
 
 
-  <!-- =========================
+  <!-- =========================================
        MUSIC
-  ========================== -->
+  ========================================== -->
 
   <audio
     id="bgMusic"
     loop
     preload="auto"
   >
+
     <source
       src="music.mp3"
       type="audio/mpeg"
     >
+
   </audio>
 
 
-  <!-- =========================
+  <!-- =========================================
        IMAGE VIEWER
-  ========================== -->
+  ========================================== -->
 
   <img
     id="viewer"
@@ -114,9 +140,19 @@
   >
 
 
-  <!-- =========================
+  <!-- =========================================
+       IMAGE CAPTION
+  ========================================== -->
+
+  <div
+    id="imageCaption"
+    class="image-caption"
+  ></div>
+
+
+  <!-- =========================================
        VIDEO
-  ========================== -->
+  ========================================== -->
 
   <video
     id="videoViewer"
@@ -124,16 +160,25 @@
     webkit-playsinline
     preload="auto"
   >
+
     <source
       src="video.mp4"
       type="video/mp4"
     >
+
   </video>
 
 
-  <!-- =========================
+  <!-- =========================================
+       VIDEO TRANSITION
+  ========================================== -->
+
+  <div id="videoFade"></div>
+
+
+  <!-- =========================================
        QUESTION
-  ========================== -->
+  ========================================== -->
 
   <div
     id="questionBox"
@@ -143,7 +188,7 @@
     <div class="question-card">
 
       <img
-        src="5.png"
+        src="6.png"
         class="butterfly"
         alt=""
       >
@@ -172,9 +217,9 @@
   </div>
 
 
-  <!-- =========================
+  <!-- =========================================
        FINAL
-  ========================== -->
+  ========================================== -->
 
   <div
     id="finalBox"
@@ -182,19 +227,23 @@
   >
 
     <img
-      src="6.png"
+      src="5.png"
       alt=""
     >
 
     <p>
+
       Ủa có tham gia hỏ hihi cảm ơn
       <b>CÔNG CHÚA</b>
       đã vui vẻ đồng ý tình cảm của
       <b>“tấm thân nhỏ bé”</b>
       nhé.
+
       <br><br>
+
       Mong sẽ thấy em với bộ đồ anh tặng
       và hộp quà anh trao 💗
+
     </p>
 
   </div>
