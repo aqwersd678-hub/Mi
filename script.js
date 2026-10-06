@@ -1,15 +1,15 @@
-/* =========================================
-   TRẠNG THÁI
-========================================= */
+/* =====================================================
+   STATE
+===================================================== */
 
 let stage = 0;
 let index = 0;
 let canNext = false;
 
 
-/* =========================================
-   ẢNH
-========================================= */
+/* =====================================================
+   FILES
+===================================================== */
 
 const images = [
   "1.png",
@@ -19,9 +19,9 @@ const images = [
 ];
 
 
-/* =========================================
-   ELEMENT
-========================================= */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const envelope =
   document.getElementById("envelope");
@@ -29,11 +29,17 @@ const envelope =
 const viewer =
   document.getElementById("viewer");
 
+const videoViewer =
+  document.getElementById("videoViewer");
+
 const hint =
   document.querySelector(".hint");
 
 const flowerLayer =
   document.getElementById("flowerLayer");
+
+const bgMusic =
+  document.getElementById("bgMusic");
 
 const questionBox =
   document.getElementById("questionBox");
@@ -45,19 +51,19 @@ const yesBtn =
   document.getElementById("yesBtn");
 
 
-/* =========================================
-   BÌ THƯ
-========================================= */
+/* =====================================================
+   ENVELOPE
+===================================================== */
 
 envelope.onclick = (e) => {
 
   e.stopPropagation();
 
 
-  /* ================================
+  /* -----------------------------------------
      CLICK 1
-     MỞ BÌ THƯ
-  ================================= */
+     Mở phong bì
+  ----------------------------------------- */
 
   if (stage === 0) {
 
@@ -69,32 +75,44 @@ envelope.onclick = (e) => {
   }
 
 
-  /* ================================
+  /* -----------------------------------------
      CLICK 2
-     HOA BUNG RA
-  ================================= */
+     Hoa + nhạc
+  ----------------------------------------- */
 
   if (stage === 1) {
 
     stage = 2;
 
-    envelope.style.pointerEvents =
-      "none";
+    envelope.style.pointerEvents = "none";
 
 
-    /* Ẩn hint */
+    /* Ẩn chữ */
 
     hint.style.opacity = "0";
 
+
     setTimeout(() => {
 
-      hint.style.display =
-        "none";
+      hint.style.display = "none";
 
     }, 500);
 
 
-    /* Bắt đầu hoa */
+    /* Nhạc bắt đầu */
+
+    bgMusic.volume = 0.65;
+
+    bgMusic.play().catch(() => {
+
+      console.log(
+        "Trình duyệt chặn autoplay."
+      );
+
+    });
+
+
+    /* Hoa */
 
     startFlowerTransition();
 
@@ -103,28 +121,25 @@ envelope.onclick = (e) => {
 };
 
 
-/* =========================================
-   HIỆU ỨNG HOA
-========================================= */
+/* =====================================================
+   FLOWER TRANSITION
+===================================================== */
 
 function startFlowerTransition() {
 
   flowerLayer.innerHTML = "";
 
-  flowerLayer.style.display =
-    "block";
+  flowerLayer.style.display = "block";
 
-  flowerLayer.style.opacity =
-    "1";
+  flowerLayer.style.opacity = "1";
 
   flowerLayer.classList.remove(
     "fade-out"
   );
 
 
-  /* Các loại hoa */
-
   const flowers = [
+
     "🌸",
     "🌷",
     "🌺",
@@ -133,6 +148,7 @@ function startFlowerTransition() {
     "💐",
     "🌸",
     "🌷"
+
   ];
 
 
@@ -151,53 +167,37 @@ function startFlowerTransition() {
     flower.innerText =
       flowers[
         Math.floor(
-          Math.random() *
-          flowers.length
+          Math.random()
+          * flowers.length
         )
       ];
 
 
-    /* --------------------------------
-       Vị trí cuối
-    -------------------------------- */
-
     const x =
       (Math.random() - .5)
-      *
-      window.innerWidth
-      *
-      1.8;
+      * window.innerWidth
+      * 1.8;
 
 
     const y =
       (Math.random() - .5)
-      *
-      window.innerHeight
-      *
-      1.8;
+      * window.innerHeight
+      * 1.8;
 
-
-    /* Kích thước */
 
     const size =
       20 +
       Math.random() * 38;
 
 
-    /* Độ trễ */
-
     const delay =
       Math.random() * .45;
 
-
-    /* Góc xoay */
 
     const rotate =
       (Math.random() - .5)
       * 1000;
 
-
-    /* CSS variables */
 
     flower.style.setProperty(
       "--x",
@@ -236,9 +236,7 @@ function startFlowerTransition() {
   }
 
 
-  /* =================================
-     HOA TAN
-  ================================= */
+  /* Bắt đầu fade */
 
   setTimeout(() => {
 
@@ -249,9 +247,7 @@ function startFlowerTransition() {
   }, 2100);
 
 
-  /* =================================
-     HIỆN ẢNH 1
-  ================================= */
+  /* Sau khi hoa biến mất */
 
   setTimeout(() => {
 
@@ -263,7 +259,6 @@ function startFlowerTransition() {
 
     showFirstImage();
 
-
     stage = 3;
 
   }, 3100);
@@ -271,14 +266,13 @@ function startFlowerTransition() {
 }
 
 
-/* =========================================
-   ẢNH ĐẦU
-========================================= */
+/* =====================================================
+   SHOW IMAGE 1
+===================================================== */
 
 function showFirstImage() {
 
   index = 0;
-
 
   viewer.src =
     images[index];
@@ -306,9 +300,9 @@ function showFirstImage() {
 }
 
 
-/* =========================================
-   CHẠM ẢNH
-========================================= */
+/* =====================================================
+   IMAGE CLICK
+===================================================== */
 
 viewer.onclick = (e) => {
 
@@ -328,7 +322,7 @@ viewer.onclick = (e) => {
   canNext = false;
 
 
-  /* Fade ảnh */
+  /* Fade ảnh hiện tại */
 
   viewer.classList.remove(
     "show"
@@ -340,9 +334,9 @@ viewer.onclick = (e) => {
     index++;
 
 
-    /* ==============================
-       CÒN ẢNH
-    ============================== */
+    /* -----------------------------------------
+       Còn ảnh
+    ----------------------------------------- */
 
     if (
       index < images.length
@@ -364,13 +358,126 @@ viewer.onclick = (e) => {
     }
 
 
-    /* ==============================
-       HẾT ẢNH
-    ============================== */
+    /* -----------------------------------------
+       HẾT 4 ẢNH
+       → VIDEO
+    ----------------------------------------- */
 
     viewer.style.display =
       "none";
 
+
+    playVideo();
+
+  }, 400);
+
+};
+
+
+/* =====================================================
+   PLAY VIDEO
+===================================================== */
+
+function playVideo() {
+
+  stage = 5;
+
+
+  /* Dừng nhạc nền */
+
+  bgMusic.pause();
+
+
+  /* Đưa video về đầu */
+
+  videoViewer.currentTime = 0;
+
+
+  videoViewer.style.display =
+    "block";
+
+
+  videoViewer.classList.remove(
+    "video-show"
+  );
+
+
+  /*
+    Play ngay trong chuỗi click
+    của người dùng.
+    Vì vậy video có thể có tiếng
+    mà ít bị trình duyệt chặn.
+  */
+
+  const playPromise =
+    videoViewer.play();
+
+
+  if (
+    playPromise !== undefined
+  ) {
+
+    playPromise
+      .then(() => {
+
+        setTimeout(() => {
+
+          videoViewer.classList.add(
+            "video-show"
+          );
+
+        }, 50);
+
+      })
+      .catch(() => {
+
+        /*
+          Nếu trình duyệt vẫn chặn,
+          hiện video nhưng không làm
+          hỏng flow.
+        */
+
+        videoViewer.muted = true;
+
+        videoViewer.play();
+
+        setTimeout(() => {
+
+          videoViewer.classList.add(
+            "video-show"
+          );
+
+        }, 50);
+
+      });
+
+  }
+
+}
+
+
+/* =====================================================
+   VIDEO ENDED
+===================================================== */
+
+videoViewer.onended = () => {
+
+  /* Fade video */
+
+  videoViewer.classList.remove(
+    "video-show"
+  );
+
+
+  setTimeout(() => {
+
+    videoViewer.pause();
+
+    videoViewer.style.display =
+      "none";
+
+
+    /* Hiện câu hỏi */
 
     questionBox.style.display =
       "flex";
@@ -378,14 +485,14 @@ viewer.onclick = (e) => {
 
     stage = 4;
 
-  }, 400);
+  }, 600);
 
 };
 
 
-/* =========================================
-   YESN'T
-========================================= */
+/* =====================================================
+   YES
+===================================================== */
 
 yesBtn.onclick = (e) => {
 
@@ -398,5 +505,15 @@ yesBtn.onclick = (e) => {
 
   finalBox.style.display =
     "flex";
+
+
+  /*
+    Nếu muốn nhạc quay lại
+    ở ending thì bỏ comment
+    đoạn dưới.
+  */
+
+  // bgMusic.currentTime = 0;
+  // bgMusic.play();
 
 };

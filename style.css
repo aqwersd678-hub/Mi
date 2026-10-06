@@ -1,79 +1,67 @@
-/* =========================================
-   RESET
-========================================= */
-
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-
   -webkit-tap-highlight-color: transparent;
 }
 
-
-/* =========================================
-   BODY
-========================================= */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
 
 body {
-
-  width: 100vw;
-  height: 100vh;
-
   overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   background:
     radial-gradient(
       circle at center,
-      #fff4f7 0%,
-      #fdecef 55%,
-      #f8dfe7 100%
+      #fff7fb 0%,
+      #ffeaf4 45%,
+      #ffd7e8 100%
     );
 
   font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Helvetica Neue",
+    "Segoe UI",
     Arial,
     sans-serif;
-
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
-
 }
 
 
-/* =========================================
+/* =====================================================
    HINT
-========================================= */
+===================================================== */
 
 .hint {
-
   position: fixed;
 
-  top: 8vh;
+  top: 12%;
 
   width: 100%;
 
   text-align: center;
 
-  font-size: 16px;
+  color: #9b526f;
 
-  color: #755764;
+  font-size: 18px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
 
   z-index: 20;
 
   transition:
     opacity .5s ease;
-
 }
 
 
-/* =========================================
-   BÌ THƯ CON MÈO
-========================================= */
+/* =====================================================
+   CAT ENVELOPE
+===================================================== */
 
 .cat-envelope {
 
@@ -84,158 +72,118 @@ body {
 
   cursor: pointer;
 
-  z-index: 10;
+  perspective: 1000px;
 
-  filter:
-    drop-shadow(
-      0 18px 25px
-      rgba(100,50,70,.16)
-    );
-
+  transition:
+    transform .4s ease,
+    opacity .6s ease;
 }
 
 
-/* =========================================
-   TAI
-========================================= */
+/* =====================================================
+   CAT EARS
+===================================================== */
 
 .cat-ear {
 
   position: absolute;
 
-  top: 4px;
+  top: 5px;
 
-  width: 65px;
-  height: 72px;
+  width: 72px;
+  height: 75px;
 
-  background: #f2b8ca;
+  background:
+    linear-gradient(
+      145deg,
+      #ffb6d1,
+      #ff8fbb
+    );
+
+  border-radius:
+    20px
+    20px
+    8px
+    8px;
 
   z-index: 1;
 
+  transform:
+    rotate(45deg);
+
+  box-shadow:
+    0 5px 15px rgba(190, 75, 120, .12);
 }
 
 
 .ear-left {
-
-  left: 28px;
-
-  transform:
-    rotate(-25deg);
-
-  border-radius:
-    12px
-    45px
-    10px
-    25px;
-
+  left: 18px;
 }
 
 
 .ear-right {
-
-  right: 28px;
+  right: 18px;
 
   transform:
-    rotate(25deg);
-
-  border-radius:
-    45px
-    12px
-    25px
-    10px;
-
+    rotate(-45deg);
 }
 
-
-/* =========================================
-   TAI TRONG
-========================================= */
 
 .inner-ear {
 
   position: absolute;
 
-  width: 32px;
-  height: 42px;
+  width: 42px;
+  height: 45px;
 
-  top: 16px;
+  top: 14px;
+  left: 15px;
 
-  background: #e88da9;
-
-  opacity: .75;
-
-}
-
-
-.ear-left .inner-ear {
-
-  left: 17px;
-
-  transform:
-    rotate(8deg);
+  background: #ff6fa9;
 
   border-radius:
-    8px
-    25px
-    8px
-    15px;
+    50%
+    50%
+    10px
+    10px;
 
+  opacity: .7;
 }
 
 
-.ear-right .inner-ear {
-
-  right: 17px;
-
-  transform:
-    rotate(-8deg);
-
-  border-radius:
-    25px
-    8px
-    15px
-    8px;
-
-}
-
-
-/* =========================================
-   THÂN BÌ THƯ
-========================================= */
+/* =====================================================
+   ENVELOPE BODY
+===================================================== */
 
 .envelope-body {
 
   position: absolute;
 
   left: 15px;
-  bottom: 8px;
+  bottom: 25px;
 
   width: 240px;
   height: 155px;
 
-  background: #fffafa;
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #ffe9f2
+    );
 
-  border-radius:
-    8px
-    8px
-    25px
-    25px;
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 35px rgba(185, 82, 125, .18);
 
   overflow: hidden;
 
-  z-index: 2;
-
-  box-shadow:
-    inset
-    0 0 0 2px
-    rgba(235,180,195,.45);
-
+  z-index: 3;
 }
 
 
-/* =========================================
-   MẶT TRƯỚC BÌ THƯ
-========================================= */
+/* Mặt trước */
 
 .envelope-front {
 
@@ -246,16 +194,17 @@ body {
   background:
     linear-gradient(
       145deg,
-      #fff,
-      #fce8ee
+      #fff8fb,
+      #ffdce9
     );
 
+  border-radius: 20px;
 }
 
 
-/* =========================================
-   NẾP GẤP TRÁI / PHẢI
-========================================= */
+/* =====================================================
+   ENVELOPE FOLDS
+===================================================== */
 
 .envelope-fold {
 
@@ -266,8 +215,10 @@ body {
   width: 0;
   height: 0;
 
-  z-index: 3;
+  z-index: 4;
 
+  border-bottom:
+    105px solid rgba(255, 190, 214, .55);
 }
 
 
@@ -275,12 +226,8 @@ body {
 
   left: 0;
 
-  border-top:
-    90px solid transparent;
-
-  border-left:
-    120px solid #f8dce5;
-
+  border-right:
+    120px solid transparent;
 }
 
 
@@ -288,18 +235,14 @@ body {
 
   right: 0;
 
-  border-top:
-    90px solid transparent;
-
-  border-right:
-    120px solid #f8dce5;
-
+  border-left:
+    120px solid transparent;
 }
 
 
-/* =========================================
-   NẮP MÈO
-========================================= */
+/* =====================================================
+   CAT FLAP
+===================================================== */
 
 .cat-flap {
 
@@ -309,41 +252,41 @@ body {
   top: 48px;
 
   width: 240px;
-  height: 125px;
+  height: 150px;
 
   background:
     linear-gradient(
-      135deg,
-      #f6bfd0,
-      #efaec3
+      145deg,
+      #ffb8d2,
+      #ff91bd
     );
 
   clip-path:
     polygon(
       0 0,
-      50% 72%,
-      100% 0
+      100% 0,
+      50% 100%
     );
 
   transform-origin:
     top center;
 
   transition:
-    transform
-    1s
-    cubic-bezier(.2,.8,.2,1);
+    transform .9s cubic-bezier(.2,.8,.2,1);
 
-  z-index: 7;
+  z-index: 8;
 
+  filter:
+    drop-shadow(
+      0 5px 8px
+      rgba(180,70,110,.12)
+    );
 }
 
 
-/* =========================================
-   CLICK LẦN 1 → MỞ
-========================================= */
+/* mở nắp */
 
-.cat-envelope.open
-.cat-flap {
+.cat-envelope.open .cat-flap {
 
   transform:
     rotateX(180deg);
@@ -351,281 +294,253 @@ body {
 }
 
 
-/* =========================================
-   MẶT MÈO
-========================================= */
+/* =====================================================
+   CAT FACE
+===================================================== */
 
 .cat-face {
 
   position: absolute;
 
-  width: 110px;
-  height: 95px;
+  top: 30px;
+  left: 50%;
 
-  left: 65px;
-  top: 8px;
+  width: 120px;
+  height: 90px;
+
+  transform:
+    translateX(-50%);
 
 }
 
 
-/* =========================================
-   MẮT
-========================================= */
+/* Mắt */
 
 .cat-eye {
 
   position: absolute;
 
-  width: 10px;
-  height: 14px;
+  top: 25px;
 
-  top: 38px;
+  width: 16px;
+  height: 22px;
 
-  background: #3c2930;
+  background: #49303b;
 
   border-radius: 50%;
-
 }
 
 
 .eye-left {
-
-  left: 25px;
-
+  left: 28px;
 }
 
 
 .eye-right {
-
-  right: 25px;
-
+  right: 28px;
 }
 
 
-/* =========================================
-   MÁ HỒNG
-========================================= */
+/* Mắt sáng */
+
+.cat-eye::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 7px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  top: 4px;
+  left: 4px;
+}
+
+
+/* Má */
 
 .cat-blush {
 
   position: absolute;
 
-  width: 18px;
-  height: 9px;
+  top: 50px;
 
-  top: 58px;
+  width: 25px;
+  height: 11px;
 
-  background: #e88fa9;
-
-  opacity: .65;
+  background: #ff7da9;
 
   border-radius: 50%;
 
+  opacity: .45;
 }
 
 
 .blush-left {
-
-  left: 7px;
-
+  left: 10px;
 }
 
 
 .blush-right {
-
-  right: 7px;
-
+  right: 10px;
 }
 
 
-/* =========================================
-   MŨI
-========================================= */
+/* Mũi */
 
 .cat-nose {
 
   position: absolute;
 
+  top: 47px;
   left: 50%;
-
-  top: 53px;
 
   transform:
     translateX(-50%);
 
-  width: 10px;
+  width: 11px;
   height: 8px;
 
-  background: #c96f8b;
+  background: #e95f87;
 
-  border-radius:
-    50%;
-
+  clip-path:
+    polygon(
+      50% 100%,
+      0 0,
+      100% 0
+    );
 }
 
 
-/* =========================================
-   MIỆNG
-========================================= */
+/* Miệng */
 
 .cat-mouth {
 
   position: absolute;
 
-  width: 8px;
-  height: 8px;
+  top: 57px;
 
-  top: 60px;
+  width: 12px;
+  height: 9px;
 
   border-bottom:
-    2px solid #794c5b;
+    2px solid #743d50;
 
+  border-radius: 50%;
 }
 
 
 .left-mouth {
-
   left: 49px;
 
   transform:
     rotate(25deg);
-
 }
 
 
 .right-mouth {
-
-  right: 49px;
+  left: 59px;
 
   transform:
     rotate(-25deg);
-
 }
 
 
-/* =========================================
-   RIA
-========================================= */
+/* =====================================================
+   WHISKERS
+===================================================== */
 
 .whisker {
 
   position: absolute;
 
-  width: 32px;
+  width: 35px;
   height: 1px;
 
-  background: #9c6574;
+  background: #8d5066;
 
-  top: 59px;
-
+  opacity: .7;
 }
 
 
 .whisker-1 {
-
-  left: -5px;
-
-  transform:
-    rotate(8deg);
-
+  left: -4px;
+  top: 45px;
+  transform: rotate(10deg);
 }
 
 
 .whisker-2 {
-
-  left: -5px;
-
-  top: 67px;
-
-  transform:
-    rotate(-8deg);
-
+  left: -4px;
+  top: 54px;
+  transform: rotate(-5deg);
 }
 
 
 .whisker-3 {
-
-  right: -5px;
-
-  transform:
-    rotate(-8deg);
-
+  right: -4px;
+  top: 45px;
+  transform: rotate(-10deg);
 }
 
 
 .whisker-4 {
-
-  right: -5px;
-
-  top: 67px;
-
-  transform:
-    rotate(8deg);
-
+  right: -4px;
+  top: 54px;
+  transform: rotate(5deg);
 }
 
 
-/* =========================================
-   CHÂN MÈO
-========================================= */
+/* =====================================================
+   PAWS
+===================================================== */
 
 .cat-paw {
 
   position: absolute;
 
-  bottom: 24px;
+  bottom: 3px;
 
-  font-size: 27px;
+  font-size: 34px;
 
-  z-index: 8;
+  z-index: 10;
 
   transition:
     transform .5s ease;
-
 }
 
 
 .paw-left {
-
-  left: 34px;
-
+  left: 65px;
 }
 
 
 .paw-right {
-
-  right: 34px;
-
+  right: 65px;
 }
 
 
-/* =========================================
-   CLICK 1 → CHÂN HƠI NHÚC NHÍCH
-========================================= */
-
-.cat-envelope.open
-.paw-left {
-
+.cat-envelope.open .paw-left {
   transform:
-    rotate(-12deg)
-    translateY(-3px);
-
+    translateY(-18px)
+    rotate(-8deg);
 }
 
 
-.cat-envelope.open
-.paw-right {
-
+.cat-envelope.open .paw-right {
   transform:
-    rotate(12deg)
-    translateY(-3px);
-
+    translateY(-18px)
+    rotate(8deg);
 }
 
 
-/* =========================================
-   HOA
-========================================= */
+/* =====================================================
+   FLOWER LAYER
+===================================================== */
 
 #flowerLayer {
 
@@ -633,38 +548,30 @@ body {
 
   inset: 0;
 
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden;
-
   display: none;
 
   pointer-events: none;
 
-  z-index: 50;
+  z-index: 100;
 
-  opacity: 1;
+  overflow: hidden;
 
   background:
-    rgba(253,236,239,.15);
+    rgba(255, 238, 247, .25);
 
+  transition:
+    opacity 1s ease;
 }
 
 
 #flowerLayer.fade-out {
-
   opacity: 0;
-
-  transition:
-    opacity 1s ease;
-
 }
 
 
-/* =========================================
-   TỪNG HOA
-========================================= */
+/* =====================================================
+   FLOWERS
+===================================================== */
 
 .flower {
 
@@ -673,39 +580,26 @@ body {
   left: 50%;
   top: 55%;
 
-  font-size:
-    var(--size);
+  font-size: var(--size);
 
   opacity: 0;
 
   transform:
     translate(-50%, -50%)
-    scale(.1)
-    rotate(0deg);
+    scale(.1);
 
   animation:
     flowerBurst
-    1.9s
-    cubic-bezier(.15,.7,.2,1)
+    2.1s
+    cubic-bezier(.15,.7,.25,1)
     forwards;
 
   animation-delay:
     var(--delay);
 
-  filter:
-    drop-shadow(
-      0
-      5px
-      8px
-      rgba(0,0,0,.12)
-    );
-
+  user-select: none;
 }
 
-
-/* =========================================
-   HOA BAY RA
-========================================= */
 
 @keyframes flowerBurst {
 
@@ -720,13 +614,11 @@ body {
 
   }
 
-
-  10% {
+  15% {
 
     opacity: 1;
 
   }
-
 
   100% {
 
@@ -741,40 +633,48 @@ body {
       rotate(var(--rotate));
 
   }
-
 }
 
 
-/* =========================================
-   ẢNH
-========================================= */
+/* =====================================================
+   IMAGE VIEWER
+===================================================== */
 
 #viewer {
 
   position: fixed;
 
-  inset: 0;
-
-  margin: auto;
+  left: 50%;
+  top: 50%;
 
   max-width: 88vw;
-  max-height: 82vh;
+  max-height: 78vh;
 
   object-fit: contain;
 
-  display: none;
+  transform:
+    translate(-50%, -50%)
+    scale(.94);
 
   opacity: 0;
 
-  transform:
-    scale(.97);
+  display: none;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  z-index: 40;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 50px
+    rgba(110, 45, 80, .18);
 
   transition:
-    opacity 1s ease,
-    transform 1s ease;
-
-  z-index: 10;
-
+    opacity .4s ease,
+    transform .4s ease;
 }
 
 
@@ -783,14 +683,65 @@ body {
   opacity: 1;
 
   transform:
+    translate(-50%, -50%)
     scale(1);
-
 }
 
 
-/* =========================================
-   QUESTION
-========================================= */
+/* =====================================================
+   VIDEO
+===================================================== */
+
+#videoViewer {
+
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  width: auto;
+  height: auto;
+
+  max-width: 92vw;
+  max-height: 86vh;
+
+  transform:
+    translate(-50%, -50%)
+    scale(.96);
+
+  display: none;
+
+  opacity: 0;
+
+  object-fit: contain;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(90, 30, 70, .25);
+
+  z-index: 50;
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+
+#videoViewer.video-show {
+
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1);
+}
+
+
+/* =====================================================
+   QUESTION BOX
+===================================================== */
 
 .question-box {
 
@@ -804,57 +755,46 @@ body {
   align-items: center;
 
   background:
-    rgba(0,0,0,.55);
+    rgba(255, 235, 245, .78);
 
-  z-index: 20;
+  backdrop-filter:
+    blur(8px);
 
+  z-index: 80;
 }
 
 
 .question-card {
 
-  width: 82vw;
-  max-width: 340px;
+  width: min(88vw, 390px);
 
-  padding:
-    26px
-    22px
-    30px;
+  padding: 28px 24px 30px;
 
   text-align: center;
 
   background:
-    linear-gradient(
-      135deg,
-      #fdecef,
-      #f6d8e7
-    );
+    rgba(255,255,255,.96);
 
-  border-radius: 26px;
+  border-radius: 28px;
 
   box-shadow:
-    0
-    20px
-    40px
-    rgba(0,0,0,.25);
+    0 20px 70px
+    rgba(150, 65, 105, .2);
 
   animation:
-    fadeUp
-    .6s
-    ease;
-
+    cardAppear .7s ease;
 }
 
 
-@keyframes fadeUp {
+@keyframes cardAppear {
 
   from {
 
     opacity: 0;
 
     transform:
-      translateY(20px)
-      scale(.97);
+      scale(.8)
+      translateY(20px);
 
   }
 
@@ -863,53 +803,43 @@ body {
     opacity: 1;
 
     transform:
-      translateY(0)
-      scale(1);
+      scale(1)
+      translateY(0);
 
   }
-
 }
 
 
-/* =========================================
-   ẢNH BƯỚM
-========================================= */
+/* Ảnh 6 */
 
 .butterfly {
 
-  width: 120px;
+  width: 130px;
+  max-width: 60%;
 
-  margin-bottom: 18px;
-
-  filter:
-    drop-shadow(
-      0
-      6px
-      12px
-      rgba(0,0,0,.25)
-    );
-
+  margin-bottom: 10px;
 }
 
 
-/* =========================================
-   CÂU HỎI
-========================================= */
+/* Câu hỏi */
 
 .question-text {
 
-  font-size: 18px;
+  margin: 8px 0 22px;
 
-  color: #7a3e6d;
+  color: #713d53;
 
-  margin-bottom: 22px;
+  font-size: 20px;
 
+  font-weight: 600;
+
+  line-height: 1.5;
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .buttons {
 
@@ -917,23 +847,28 @@ body {
 
   justify-content: center;
 
-  gap: 18px;
-
+  gap: 14px;
 }
 
 
 .buttons button {
 
-  padding:
-    12px
-    30px;
+  min-width: 105px;
+
+  padding: 11px 20px;
 
   border: none;
 
-  border-radius: 26px;
+  border-radius: 999px;
 
   font-size: 15px;
 
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease;
 }
 
 
@@ -942,29 +877,39 @@ body {
   background:
     linear-gradient(
       135deg,
-      #f4b6c2,
-      #e89ac7
+      #ff7fab,
+      #ff5f99
     );
 
   color: white;
 
-  cursor: pointer;
+  box-shadow:
+    0 8px 20px
+    rgba(255, 95, 153, .25);
+}
 
+
+#yesBtn:hover {
+
+  transform:
+    translateY(-2px)
+    scale(1.03);
 }
 
 
 #noBtn {
 
-  background: #e0c9d6;
+  background: #eee;
 
-  color: #a58aa0;
+  color: #aaa;
 
+  cursor: not-allowed;
 }
 
 
-/* =========================================
-   LỜI KẾT
-========================================= */
+/* =====================================================
+   FINAL BOX
+===================================================== */
 
 .final-box {
 
@@ -979,34 +924,150 @@ body {
   justify-content: center;
   align-items: center;
 
-  padding: 24px;
+  padding: 30px;
 
   text-align: center;
 
-  background: #fdecef;
+  background:
+    radial-gradient(
+      circle at center,
+      #fff8fc,
+      #ffe0ed
+    );
 
-  z-index: 30;
+  z-index: 90;
 
+  animation:
+    finalAppear .8s ease;
+}
+
+
+@keyframes finalAppear {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      scale(.95);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      scale(1);
+
+  }
 }
 
 
 .final-box img {
 
-  max-width: 80vw;
+  width: min(270px, 70vw);
 
-  max-height: 58vh;
+  max-height: 45vh;
+
+  object-fit: contain;
 
   margin-bottom: 20px;
 
+  filter:
+    drop-shadow(
+      0 12px 25px
+      rgba(140, 50, 90, .15)
+    );
 }
 
 
 .final-box p {
 
-  font-size: 16px;
+  max-width: 500px;
 
-  color: #333;
+  margin: 0;
 
-  line-height: 1.6;
+  color: #713d53;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+.final-box b {
+
+  color: #e85d91;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .hint {
+
+    top: 11%;
+
+    font-size: 16px;
+
+  }
+
+
+  .cat-envelope {
+
+    transform:
+      scale(.9);
+
+  }
+
+
+  #viewer {
+
+    max-width: 92vw;
+
+    max-height: 72vh;
+
+    border-radius: 14px;
+
+  }
+
+
+  #videoViewer {
+
+    max-width: 94vw;
+
+    max-height: 78vh;
+
+    border-radius: 16px;
+
+  }
+
+
+  .question-card {
+
+    padding:
+      25px
+      20px
+      28px;
+
+  }
+
+
+  .question-text {
+
+    font-size: 18px;
+
+  }
+
+
+  .final-box p {
+
+    font-size: 16px;
+
+  }
 
 }
