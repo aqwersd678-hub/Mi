@@ -1,24 +1,14 @@
 /* =====================================================
-   STAGE
-=====================================================
-
-   0 = chưa mở phong bì
-   1 = đã mở phong bì
-   2 = đang hoa
-   3 = đang xem ảnh
-   4 = câu hỏi
-   5 = đang xem video
+   STATE
 ===================================================== */
 
 let stage = 0;
-
 let index = 0;
-
 let canNext = false;
 
 
 /* =====================================================
-   IMAGES
+   FILES
 ===================================================== */
 
 const images = [
@@ -62,18 +52,18 @@ const yesBtn =
 
 
 /* =====================================================
-   PHONG BÌ
+   ENVELOPE
 ===================================================== */
 
-envelope.onclick = function (e) {
+envelope.onclick = (e) => {
 
   e.stopPropagation();
 
 
-  /* ==========================================
-     LẦN CLICK 1
+  /* -----------------------------------------
+     CLICK 1
      Mở phong bì
-  ========================================== */
+  ----------------------------------------- */
 
   if (stage === 0) {
 
@@ -85,10 +75,10 @@ envelope.onclick = function (e) {
   }
 
 
-  /* ==========================================
-     LẦN CLICK 2
+  /* -----------------------------------------
+     CLICK 2
      Hoa + nhạc
-  ========================================== */
+  ----------------------------------------- */
 
   if (stage === 1) {
 
@@ -97,11 +87,12 @@ envelope.onclick = function (e) {
     envelope.style.pointerEvents = "none";
 
 
-    /* Ẩn hint */
+    /* Ẩn chữ */
 
     hint.style.opacity = "0";
 
-    setTimeout(function () {
+
+    setTimeout(() => {
 
       hint.style.display = "none";
 
@@ -112,11 +103,10 @@ envelope.onclick = function (e) {
 
     bgMusic.volume = 0.65;
 
-    bgMusic.play().catch(function (error) {
+    bgMusic.play().catch(() => {
 
       console.log(
-        "Không thể tự phát nhạc:",
-        error
+        "Trình duyệt chặn autoplay."
       );
 
     });
@@ -132,7 +122,7 @@ envelope.onclick = function (e) {
 
 
 /* =====================================================
-   HOA
+   FLOWER TRANSITION
 ===================================================== */
 
 function startFlowerTransition() {
@@ -143,10 +133,13 @@ function startFlowerTransition() {
 
   flowerLayer.style.opacity = "1";
 
-  flowerLayer.classList.remove("fade-out");
+  flowerLayer.classList.remove(
+    "fade-out"
+  );
 
 
   const flowers = [
+
     "🌸",
     "🌷",
     "🌺",
@@ -155,10 +148,11 @@ function startFlowerTransition() {
     "💐",
     "🌸",
     "🌷"
+
   ];
 
 
-  /* Tạo 75 bông */
+  /* Tạo hoa */
 
   for (let i = 0; i < 75; i++) {
 
@@ -166,32 +160,29 @@ function startFlowerTransition() {
       document.createElement("div");
 
 
-    flower.className = "flower";
+    flower.className =
+      "flower";
 
 
     flower.innerText =
       flowers[
         Math.floor(
-          Math.random() *
-          flowers.length
+          Math.random()
+          * flowers.length
         )
       ];
 
 
     const x =
-      (Math.random() - 0.5)
-      *
-      window.innerWidth
-      *
-      1.8;
+      (Math.random() - .5)
+      * window.innerWidth
+      * 1.8;
 
 
     const y =
-      (Math.random() - 0.5)
-      *
-      window.innerHeight
-      *
-      1.8;
+      (Math.random() - .5)
+      * window.innerHeight
+      * 1.8;
 
 
     const size =
@@ -200,41 +191,41 @@ function startFlowerTransition() {
 
 
     const delay =
-      Math.random() * 0.45;
+      Math.random() * .45;
 
 
     const rotate =
-      (Math.random() - 0.5)
+      (Math.random() - .5)
       * 1000;
 
 
     flower.style.setProperty(
       "--x",
-      x + "px"
+      `${x}px`
     );
 
 
     flower.style.setProperty(
       "--y",
-      y + "px"
+      `${y}px`
     );
 
 
     flower.style.setProperty(
       "--size",
-      size + "px"
+      `${size}px`
     );
 
 
     flower.style.setProperty(
       "--delay",
-      delay + "s"
+      `${delay}s`
     );
 
 
     flower.style.setProperty(
       "--rotate",
-      rotate + "deg"
+      `${rotate}deg`
     );
 
 
@@ -245,9 +236,9 @@ function startFlowerTransition() {
   }
 
 
-  /* Hoa bắt đầu biến mất */
+  /* Bắt đầu fade */
 
-  setTimeout(function () {
+  setTimeout(() => {
 
     flowerLayer.classList.add(
       "fade-out"
@@ -256,14 +247,15 @@ function startFlowerTransition() {
   }, 2100);
 
 
-  /* Chuyển sang ảnh */
+  /* Sau khi hoa biến mất */
 
-  setTimeout(function () {
+  setTimeout(() => {
 
     flowerLayer.style.display =
       "none";
 
     flowerLayer.innerHTML = "";
+
 
     showFirstImage();
 
@@ -275,7 +267,7 @@ function startFlowerTransition() {
 
 
 /* =====================================================
-   ẢNH 1
+   SHOW IMAGE 1
 ===================================================== */
 
 function showFirstImage() {
@@ -285,15 +277,17 @@ function showFirstImage() {
   viewer.src =
     images[index];
 
+
   viewer.style.display =
     "block";
+
 
   viewer.classList.remove(
     "show"
   );
 
 
-  setTimeout(function () {
+  setTimeout(() => {
 
     viewer.classList.add(
       "show"
@@ -307,20 +301,21 @@ function showFirstImage() {
 
 
 /* =====================================================
-   CLICK ẢNH
+   IMAGE CLICK
 ===================================================== */
 
-viewer.onclick = function (e) {
+viewer.onclick = (e) => {
 
   e.stopPropagation();
 
 
   if (
     stage !== 3 ||
-    canNext === false
+    !canNext
   ) {
 
     return;
+
   }
 
 
@@ -334,14 +329,14 @@ viewer.onclick = function (e) {
   );
 
 
-  setTimeout(function () {
+  setTimeout(() => {
 
     index++;
 
 
-    /* ==========================================
-       VẪN CÒN ẢNH
-    ========================================== */
+    /* -----------------------------------------
+       Còn ảnh
+    ----------------------------------------- */
 
     if (
       index < images.length
@@ -350,21 +345,23 @@ viewer.onclick = function (e) {
       viewer.src =
         images[index];
 
+
       viewer.classList.add(
         "show"
       );
 
+
       canNext = true;
 
       return;
+
     }
 
 
-    /* ==========================================
-       ĐÃ HẾT 4 ẢNH
-
+    /* -----------------------------------------
+       HẾT 4 ẢNH
        → VIDEO
-    ========================================== */
+    ----------------------------------------- */
 
     viewer.style.display =
       "none";
@@ -378,7 +375,7 @@ viewer.onclick = function (e) {
 
 
 /* =====================================================
-   VIDEO
+   PLAY VIDEO
 ===================================================== */
 
 function playVideo() {
@@ -386,80 +383,93 @@ function playVideo() {
   stage = 5;
 
 
-  /* Dừng nhạc */
+  /* Dừng nhạc nền */
 
   bgMusic.pause();
 
 
-  /* Đảm bảo video về đầu */
+  /* Đưa video về đầu */
 
   videoViewer.currentTime = 0;
 
 
-  /* Hiện video */
-
   videoViewer.style.display =
     "block";
 
-
-  /* Hiện animation */
-
-  setTimeout(function () {
-
-    videoViewer.classList.add(
-      "video-show"
-    );
-
-  }, 50);
-
-
-  /*
-    Chạy video.
-
-    Vì hàm này được gọi trực tiếp
-    sau cú click ảnh 4 nên trình
-    duyệt thường cho phép autoplay.
-  */
-
-  videoViewer.play()
-    .then(function () {
-
-      console.log(
-        "Video đang chạy."
-      );
-
-    })
-    .catch(function (error) {
-
-      console.log(
-        "Không autoplay được:",
-        error
-      );
-
-      /*
-        Không tự mute video ở đây.
-        Vì nếu video có tiếng,
-        người dùng có thể bấm PLAY
-        bằng controls.
-      */
-
-    });
-
-}
-
-
-/* =====================================================
-   VIDEO KẾT THÚC
-===================================================== */
-
-videoViewer.onended = function () {
 
   videoViewer.classList.remove(
     "video-show"
   );
 
 
-  setTimeout(function () {
+  /*
+    Play ngay trong chuỗi click
+    của người dùng.
+    Vì vậy video có thể có tiếng
+    mà ít bị trình duyệt chặn.
+  */
+
+  const playPromise =
+    videoViewer.play();
+
+
+  if (
+    playPromise !== undefined
+  ) {
+
+    playPromise
+      .then(() => {
+
+        setTimeout(() => {
+
+          videoViewer.classList.add(
+            "video-show"
+          );
+
+        }, 50);
+
+      })
+      .catch(() => {
+
+        /*
+          Nếu trình duyệt vẫn chặn,
+          hiện video nhưng không làm
+          hỏng flow.
+        */
+
+        videoViewer.muted = true;
+
+        videoViewer.play();
+
+        setTimeout(() => {
+
+          videoViewer.classList.add(
+            "video-show"
+          );
+
+        }, 50);
+
+      });
+
+  }
+
+}
+
+
+/* =====================================================
+   VIDEO ENDED
+===================================================== */
+
+videoViewer.onended = () => {
+
+  /* Fade video */
+
+  videoViewer.classList.remove(
+    "video-show"
+  );
+
+
+  setTimeout(() => {
 
     videoViewer.pause();
 
@@ -484,7 +494,7 @@ videoViewer.onended = function () {
    YES
 ===================================================== */
 
-yesBtn.onclick = function (e) {
+yesBtn.onclick = (e) => {
 
   e.stopPropagation();
 
@@ -495,5 +505,15 @@ yesBtn.onclick = function (e) {
 
   finalBox.style.display =
     "flex";
+
+
+  /*
+    Nếu muốn nhạc quay lại
+    ở ending thì bỏ comment
+    đoạn dưới.
+  */
+
+  // bgMusic.currentTime = 0;
+  // bgMusic.play();
 
 };
