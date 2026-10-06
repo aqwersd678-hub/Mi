@@ -1,12 +1,12 @@
 /* =====================================================
    STAGE
 
-   0 = chưa mở phong bì
+   0 = chưa mở
    1 = đã mở phong bì
-   2 = đang hoa
-   3 = đang xem ảnh
+   2 = hoa
+   3 = ảnh
    4 = câu hỏi
-   5 = đang xem video
+   5 = video
 ===================================================== */
 
 let stage = 0;
@@ -29,106 +29,241 @@ const images = [
 
 
 /* =====================================================
+   CAPTIONS
+=====================================================
+
+   Nếu không muốn chữ xuất hiện
+   thì để chuỗi rỗng.
+
+===================================================== */
+
+const captions = [
+  "",
+  "",
+  "",
+  ""
+];
+
+
+/* =====================================================
    ELEMENTS
 ===================================================== */
 
+const loadingScreen =
+  document.getElementById(
+    "loadingScreen"
+  );
+
 const envelope =
-  document.getElementById("envelope");
+  document.getElementById(
+    "envelope"
+  );
 
 const viewer =
-  document.getElementById("viewer");
+  document.getElementById(
+    "viewer"
+  );
+
+const imageCaption =
+  document.getElementById(
+    "imageCaption"
+  );
 
 const videoViewer =
-  document.getElementById("videoViewer");
+  document.getElementById(
+    "videoViewer"
+  );
+
+const videoFade =
+  document.getElementById(
+    "videoFade"
+  );
 
 const hint =
-  document.querySelector(".hint");
+  document.querySelector(
+    ".hint"
+  );
 
 const flowerLayer =
-  document.getElementById("flowerLayer");
+  document.getElementById(
+    "flowerLayer"
+  );
 
 const bgMusic =
-  document.getElementById("bgMusic");
+  document.getElementById(
+    "bgMusic"
+  );
 
 const questionBox =
-  document.getElementById("questionBox");
+  document.getElementById(
+    "questionBox"
+  );
 
 const finalBox =
-  document.getElementById("finalBox");
+  document.getElementById(
+    "finalBox"
+  );
 
 const yesBtn =
-  document.getElementById("yesBtn");
+  document.getElementById(
+    "yesBtn"
+  );
+
+
+/* =====================================================
+   PRELOAD
+===================================================== */
+
+function preloadEverything() {
+
+  const imagePromises =
+    images.map(function (src) {
+
+      return new Promise(
+        function (resolve) {
+
+          const img =
+            new Image();
+
+          img.onload =
+            resolve;
+
+          img.onerror =
+            resolve;
+
+          img.src = src;
+
+        }
+      );
+
+    });
+
+
+  /*
+    Preload video metadata.
+    Không ép tải toàn bộ video ngay,
+    tránh tốn data trên điện thoại.
+  */
+
+  videoViewer.load();
+
+
+  Promise.all(imagePromises)
+    .then(function () {
+
+      setTimeout(
+        hideLoading,
+        500
+      );
+
+    });
+
+}
+
+
+function hideLoading() {
+
+  loadingScreen.classList.add(
+    "hide"
+  );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+window.addEventListener(
+  "load",
+  function () {
+
+    preloadEverything();
+
+  }
+);
 
 
 /* =====================================================
    PHONG BÌ
 ===================================================== */
 
-envelope.onclick = function (e) {
+envelope.onclick =
+  function (e) {
 
-  e.stopPropagation();
-
-
-  /* ==========================================
-     CLICK 1
-     Mở phong bì
-  ========================================== */
-
-  if (stage === 0) {
-
-    envelope.classList.add("open");
-
-    stage = 1;
-
-    return;
-  }
+    e.stopPropagation();
 
 
-  /* ==========================================
-     CLICK 2
-     Hoa + nhạc
-  ========================================== */
+    /* ==========================================
+       CLICK 1
+    ========================================== */
 
-  if (stage === 1) {
+    if (stage === 0) {
 
-    stage = 2;
-
-    envelope.style.pointerEvents =
-      "none";
-
-
-    /* Ẩn hint */
-
-    hint.style.opacity = "0";
-
-    setTimeout(function () {
-
-      hint.style.display = "none";
-
-    }, 500);
-
-
-    /* Nhạc */
-
-    bgMusic.volume = 0.65;
-
-    bgMusic.play().catch(function (error) {
-
-      console.log(
-        "Không thể tự phát nhạc:",
-        error
+      envelope.classList.add(
+        "open"
       );
 
-    });
+      stage = 1;
+
+      return;
+    }
 
 
-    /* Hoa */
+    /* ==========================================
+       CLICK 2
+    ========================================== */
 
-    startFlowerTransition();
+    if (stage === 1) {
 
-  }
+      stage = 2;
 
-};
+      envelope.style.pointerEvents =
+        "none";
+
+
+      /* Ẩn hint */
+
+      hint.style.opacity =
+        "0";
+
+
+      setTimeout(
+        function () {
+
+          hint.style.display =
+            "none";
+
+        },
+        500
+      );
+
+
+      /* Nhạc */
+
+      bgMusic.volume = 0.65;
+
+      bgMusic
+        .play()
+        .catch(
+          function (error) {
+
+            console.log(
+              "Music autoplay:",
+              error
+            );
+
+          }
+        );
+
+
+      /* Hoa */
+
+      startFlowerTransition();
+
+    }
+
+  };
 
 
 /* =====================================================
@@ -162,12 +297,20 @@ function startFlowerTransition() {
   ];
 
 
-  for (let i = 0; i < 75; i++) {
+  for (
+    let i = 0;
+    i < 75;
+    i++
+  ) {
 
     const flower =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
-    flower.className = "flower";
+    flower.className =
+      "flower";
+
 
     flower.innerText =
       flowers[
@@ -179,7 +322,9 @@ function startFlowerTransition() {
 
 
     const x =
-      (Math.random() - 0.5)
+      (
+        Math.random() - 0.5
+      )
       *
       window.innerWidth
       *
@@ -187,7 +332,9 @@ function startFlowerTransition() {
 
 
     const y =
-      (Math.random() - 0.5)
+      (
+        Math.random() - 0.5
+      )
       *
       window.innerHeight
       *
@@ -200,11 +347,13 @@ function startFlowerTransition() {
 
 
     const delay =
-      Math.random() * 0.45;
+      Math.random() * .45;
 
 
     const rotate =
-      (Math.random() - 0.5)
+      (
+        Math.random() - 0.5
+      )
       * 1000;
 
 
@@ -241,73 +390,165 @@ function startFlowerTransition() {
   }
 
 
-  /* Hoa mờ đi */
+  /* Hoa mờ */
 
-  setTimeout(function () {
+  setTimeout(
+    function () {
 
-    flowerLayer.classList.add(
-      "fade-out"
-    );
+      flowerLayer.classList.add(
+        "fade-out"
+      );
 
-  }, 2100);
+    },
+    2100
+  );
 
 
-  /* Sang ảnh 1 */
+  /* Sang ảnh */
 
-  setTimeout(function () {
+  setTimeout(
+    function () {
 
-    flowerLayer.style.display =
-      "none";
+      flowerLayer.style.display =
+        "none";
 
-    flowerLayer.innerHTML = "";
+      flowerLayer.innerHTML =
+        "";
 
-    showFirstImage();
+      showImage(0);
 
-    stage = 3;
+      stage = 3;
 
-  }, 3100);
+    },
+    3100
+  );
 
 }
 
 
 /* =====================================================
-   HIỆN ẢNH ĐẦU TIÊN
+   HIỆN ẢNH
 ===================================================== */
 
-function showFirstImage() {
+function showImage(
+  newIndex
+) {
 
-  index = 0;
+  index = newIndex;
 
-  viewer.style.display =
-    "block";
+  canNext = false;
 
-  viewer.style.visibility =
-    "hidden";
 
-  viewer.classList.remove(
+  /*
+    Caption
+  */
+
+  imageCaption.classList.remove(
     "show"
   );
 
 
-  viewer.onload = function () {
+  /*
+    Xóa effect cũ
+  */
 
-    viewer.style.visibility =
-      "visible";
+  viewer.classList.remove(
+    "effect-1",
+    "effect-2",
+    "effect-3",
+    "effect-4",
+    "show"
+  );
 
 
-    requestAnimationFrame(function () {
+  viewer.style.visibility =
+    "hidden";
+
+
+  viewer.style.display =
+    "block";
+
+
+  /*
+    onload trước src
+  */
+
+  viewer.onload =
+    function () {
+
+      viewer.style.visibility =
+        "visible";
+
+
+      /*
+        Chọn hiệu ứng theo ảnh
+      */
+
+      const effectClass =
+        "effect-" +
+        (index + 1);
 
       viewer.classList.add(
-        "show"
+        effectClass
       );
 
-    });
+
+      /*
+        Cho trình duyệt render
+        rồi mới fade in.
+      */
+
+      requestAnimationFrame(
+        function () {
+
+          requestAnimationFrame(
+            function () {
+
+              viewer.classList.add(
+                "show"
+              );
+
+            }
+          );
+
+        }
+      );
 
 
-    canNext = true;
+      /*
+        Caption
+      */
 
-  };
+      if (
+        captions[index] &&
+        captions[index].trim()
+      ) {
 
+        imageCaption.innerText =
+          captions[index];
+
+        setTimeout(
+          function () {
+
+            imageCaption.classList.add(
+              "show"
+            );
+
+          },
+          350
+        );
+
+      }
+
+
+      canNext = true;
+
+    };
+
+
+  /*
+    Đổi source
+  */
 
   viewer.src =
     images[index];
@@ -316,107 +557,85 @@ function showFirstImage() {
 
 
 /* =====================================================
-   CLICK CHUYỂN ẢNH
+   CLICK ẢNH
 ===================================================== */
 
-viewer.onclick = function (e) {
+viewer.onclick =
+  function (e) {
 
-  e.stopPropagation();
+    e.stopPropagation();
 
-
-  if (
-    stage !== 3 ||
-    canNext === false
-  ) {
-
-    return;
-  }
-
-
-  canNext = false;
-
-
-  /*
-    Ẩn ảnh hiện tại trước.
-    visibility hidden giúp trình duyệt
-    không kịp render lại ảnh cũ.
-  */
-
-  viewer.classList.remove(
-    "show"
-  );
-
-  viewer.style.visibility =
-    "hidden";
-
-
-  setTimeout(function () {
-
-    index++;
-
-
-    /* ==========================================
-       VẪN CÒN ẢNH
-    ========================================== */
 
     if (
-      index < images.length
+      stage !== 3 ||
+      !canNext
     ) {
-
-      /*
-        Gán onload TRƯỚC khi đổi src
-        để chờ đúng ảnh mới.
-      */
-
-      viewer.onload = function () {
-
-        viewer.style.visibility =
-          "visible";
-
-
-        requestAnimationFrame(function () {
-
-          viewer.classList.add(
-            "show"
-          );
-
-        });
-
-
-        canNext = true;
-
-      };
-
-
-      /*
-        Đổi ảnh
-      */
-
-      viewer.src =
-        images[index];
-
 
       return;
     }
 
 
-    /* ==========================================
-       HẾT 4 ẢNH
-       → VIDEO
-    ========================================== */
+    canNext = false;
 
-    viewer.style.display =
-      "none";
+
+    /*
+      Caption biến mất
+    */
+
+    imageCaption.classList.remove(
+      "show"
+    );
+
+
+    /*
+      Fade ảnh hiện tại
+    */
+
+    viewer.classList.remove(
+      "show"
+    );
+
 
     viewer.style.visibility =
       "hidden";
 
 
-    playVideo();
+    setTimeout(
+      function () {
 
-  }, 400);
+        index++;
 
-};
+
+        /*
+          CÒN ẢNH
+        */
+
+        if (
+          index < images.length
+        ) {
+
+          showImage(index);
+
+          return;
+        }
+
+
+        /*
+          HẾT ẢNH
+          → VIDEO
+        */
+
+        viewer.style.display =
+          "none";
+
+
+        playVideo();
+
+      },
+      420
+    );
+
+  };
 
 
 /* =====================================================
@@ -428,7 +647,9 @@ function playVideo() {
   stage = 5;
 
 
-  /* Dừng nhạc */
+  /*
+    Dừng nhạc nền
+  */
 
   bgMusic.pause();
 
@@ -439,7 +660,17 @@ function playVideo() {
 
   videoViewer.pause();
 
-  videoViewer.currentTime = 0;
+  videoViewer.currentTime =
+    0;
+
+
+  /*
+    Ẩn fade trước
+  */
+
+  videoFade.classList.remove(
+    "active"
+  );
 
 
   /*
@@ -452,82 +683,96 @@ function playVideo() {
   videoViewer.style.visibility =
     "visible";
 
-  videoViewer.classList.add(
-    "video-show"
+
+  requestAnimationFrame(
+    function () {
+
+      videoViewer.classList.add(
+        "video-show"
+      );
+
+    }
   );
 
 
   /*
-    Chạy video
+    Play
   */
 
   const playPromise =
     videoViewer.play();
 
 
-  if (playPromise !== undefined) {
+  if (
+    playPromise !== undefined
+  ) {
 
     playPromise
-      .then(function () {
+      .then(
+        function () {
 
-        console.log(
-          "Video đang chạy."
-        );
+          console.log(
+            "Video đang chạy."
+          );
 
-      })
-      .catch(function (error) {
+        }
+      )
+      .catch(
+        function (error) {
 
-        console.log(
-          "Không autoplay được:",
-          error
-        );
+          console.log(
+            "Video autoplay:",
+            error
+          );
 
-      });
+        }
+      );
 
   }
 
 
   /*
-    Thử fullscreen thật.
-
-    Android Chrome thường hỗ trợ.
-
-    iPhone Safari có thể không cho
-    fullscreen bằng cách này, nhưng
-    CSS phía trên vẫn làm video
-    phủ toàn bộ màn hình.
+    Fullscreen thật
   */
 
-  setTimeout(function () {
+  setTimeout(
+    function () {
 
-    try {
+      try {
 
-      if (
-        document.fullscreenElement === null &&
-        videoViewer.requestFullscreen
-      ) {
+        if (
+          document.fullscreenElement ===
+          null &&
+          videoViewer.requestFullscreen
+        ) {
 
-        videoViewer
-          .requestFullscreen()
-          .catch(function () {
+          videoViewer
+            .requestFullscreen()
+            .catch(
+              function () {
 
-            console.log(
-              "Không vào fullscreen thật."
+                console.log(
+                  "Fullscreen không khả dụng."
+                );
+
+              }
             );
 
-          });
+        }
+
+      }
+      catch (error) {
+
+        console.log(
+          "Fullscreen error:",
+          error
+        );
 
       }
 
-    } catch (error) {
-
-      console.log(
-        "Fullscreen không khả dụng."
-      );
-
-    }
-
-  }, 100);
+    },
+    150
+  );
 
 }
 
@@ -540,7 +785,16 @@ videoViewer.onended =
   function () {
 
     /*
-      Thoát fullscreen nếu đang fullscreen
+      Fade trắng/hồng
+    */
+
+    videoFade.classList.add(
+      "active"
+    );
+
+
+    /*
+      Thoát fullscreen
     */
 
     if (
@@ -549,39 +803,88 @@ videoViewer.onended =
 
       document
         .exitFullscreen()
-        .catch(function () {});
+        .catch(
+          function () {}
+        );
 
     }
 
 
-    videoViewer.classList.remove(
-      "video-show"
+    /*
+      Đợi fade xong
+    */
+
+    setTimeout(
+      function () {
+
+        videoViewer.classList.remove(
+          "video-show"
+        );
+
+
+        videoViewer.pause();
+
+        videoViewer.currentTime =
+          0;
+
+
+        videoViewer.style.display =
+          "none";
+
+
+        videoViewer.style.visibility =
+          "hidden";
+
+
+        /*
+          Hiện question
+        */
+
+        questionBox.style.display =
+          "flex";
+
+
+        /*
+          Force animation chạy lại
+        */
+
+        questionBox.classList.remove(
+          "show"
+        );
+
+
+        requestAnimationFrame(
+          function () {
+
+            questionBox.classList.add(
+              "show"
+            );
+
+          }
+        );
+
+
+        stage = 4;
+
+
+        /*
+          Bỏ màn fade
+        */
+
+        setTimeout(
+          function () {
+
+            videoFade.classList.remove(
+              "active"
+            );
+
+          },
+          500
+        );
+
+      },
+      850
     );
-
-
-    setTimeout(function () {
-
-      videoViewer.pause();
-
-      videoViewer.currentTime = 0;
-
-      videoViewer.style.display =
-        "none";
-
-      videoViewer.style.visibility =
-        "hidden";
-
-
-      /*
-        Sang câu hỏi ngay
-      */
-
-      questionBox.style.display =
-        "flex";
-
-      stage = 4;
-
-    }, 500);
 
   };
 
