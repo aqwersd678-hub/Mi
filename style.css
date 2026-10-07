@@ -3,11 +3,16 @@
 ===================================================== */
 
 * {
+
+  margin: 0;
+  padding: 0;
+
   box-sizing: border-box;
 
-  -webkit-tap-highlight-color:
-    transparent;
+  -webkit-tap-highlight-color: transparent;
+
 }
+
 
 html,
 body {
@@ -15,12 +20,12 @@ body {
   width: 100%;
   height: 100%;
 
-  margin: 0;
+  overflow: hidden;
+
 }
 
-body {
 
-  overflow: hidden;
+body {
 
   display: flex;
 
@@ -36,10 +41,14 @@ body {
     );
 
   font-family:
+    -apple-system,
+    BlinkMacSystemFont,
     "Segoe UI",
     Arial,
     sans-serif;
+
 }
+
 
 
 /* =====================================================
@@ -71,7 +80,9 @@ body {
   transition:
     opacity .8s ease,
     visibility .8s ease;
+
 }
+
 
 #loadingScreen.hide {
 
@@ -80,7 +91,9 @@ body {
   visibility: hidden;
 
   pointer-events: none;
+
 }
+
 
 .loading-heart {
 
@@ -93,25 +106,27 @@ body {
     1.2s
     ease-in-out
     infinite;
+
 }
+
 
 @keyframes loadingHeart {
 
   0%,
   100% {
 
-    transform:
-      scale(1);
+    transform: scale(1);
 
   }
 
   50% {
 
-    transform:
-      scale(1.18);
+    transform: scale(1.18);
 
   }
+
 }
+
 
 .loading-text {
 
@@ -122,7 +137,9 @@ body {
   font-size: 15px;
 
   letter-spacing: 1px;
+
 }
+
 
 
 /* =====================================================
@@ -151,7 +168,9 @@ body {
 
   transition:
     opacity .5s ease;
+
 }
+
 
 
 /* =====================================================
@@ -172,11 +191,13 @@ body {
   transition:
     transform .4s ease,
     opacity .6s ease;
+
 }
 
 
+
 /* =====================================================
-   EARS
+   CAT EARS
 ===================================================== */
 
 .cat-ear {
@@ -206,14 +227,15 @@ body {
   transform:
     rotate(45deg);
 
-  box-shadow:
-    0 5px 15px
-    rgba(190, 75, 120, .12);
 }
 
+
 .ear-left {
+
   left: 18px;
+
 }
+
 
 .ear-right {
 
@@ -221,7 +243,9 @@ body {
 
   transform:
     rotate(-45deg);
+
 }
+
 
 .inner-ear {
 
@@ -242,7 +266,9 @@ body {
     10px;
 
   opacity: .7;
+
 }
+
 
 
 /* =====================================================
@@ -275,7 +301,9 @@ body {
   overflow: hidden;
 
   z-index: 3;
+
 }
+
 
 .envelope-front {
 
@@ -291,12 +319,9 @@ body {
     );
 
   border-radius: 20px;
+
 }
 
-
-/* =====================================================
-   ENVELOPE FOLDS
-===================================================== */
 
 .envelope-fold {
 
@@ -312,7 +337,9 @@ body {
   border-bottom:
     105px solid
     rgba(255, 190, 214, .55);
+
 }
+
 
 .left-fold {
 
@@ -320,7 +347,9 @@ body {
 
   border-right:
     120px solid transparent;
+
 }
+
 
 .right-fold {
 
@@ -328,7 +357,9 @@ body {
 
   border-left:
     120px solid transparent;
+
 }
+
 
 
 /* =====================================================
@@ -368,18 +399,16 @@ body {
 
   z-index: 8;
 
-  filter:
-    drop-shadow(
-      0 5px 8px
-      rgba(180,70,110,.12)
-    );
 }
+
 
 .cat-envelope.open .cat-flap {
 
   transform:
     rotateX(180deg);
+
 }
+
 
 
 /* =====================================================
@@ -398,7 +427,9 @@ body {
 
   transform:
     translateX(-50%);
+
 }
+
 
 .cat-eye {
 
@@ -412,15 +443,23 @@ body {
   background: #49303b;
 
   border-radius: 50%;
+
 }
+
 
 .eye-left {
+
   left: 28px;
+
 }
 
+
 .eye-right {
+
   right: 28px;
+
 }
+
 
 .cat-eye::after {
 
@@ -437,12 +476,9 @@ body {
 
   top: 4px;
   left: 4px;
+
 }
 
-
-/* =====================================================
-   BLUSH
-===================================================== */
 
 .cat-blush {
 
@@ -458,20 +494,23 @@ body {
   border-radius: 50%;
 
   opacity: .45;
+
 }
+
 
 .blush-left {
+
   left: 10px;
+
 }
+
 
 .blush-right {
+
   right: 10px;
+
 }
 
-
-/* =====================================================
-   NOSE
-===================================================== */
 
 .cat-nose {
 
@@ -494,12 +533,9 @@ body {
       0 0,
       100% 0
     );
+
 }
 
-
-/* =====================================================
-   MOUTH
-===================================================== */
 
 .cat-mouth {
 
@@ -514,7 +550,9 @@ body {
     2px solid #743d50;
 
   border-radius: 50%;
+
 }
+
 
 .left-mouth {
 
@@ -522,7 +560,9 @@ body {
 
   transform:
     rotate(25deg);
+
 }
+
 
 .right-mouth {
 
@@ -530,12 +570,9 @@ body {
 
   transform:
     rotate(-25deg);
+
 }
 
-
-/* =====================================================
-   WHISKERS
-===================================================== */
 
 .whisker {
 
@@ -547,7 +584,9 @@ body {
   background: #8d5066;
 
   opacity: .7;
+
 }
+
 
 .whisker-1 {
 
@@ -556,7 +595,9 @@ body {
 
   transform:
     rotate(10deg);
+
 }
+
 
 .whisker-2 {
 
@@ -565,7 +606,9 @@ body {
 
   transform:
     rotate(-5deg);
+
 }
+
 
 .whisker-3 {
 
@@ -574,7 +617,9 @@ body {
 
   transform:
     rotate(-10deg);
+
 }
+
 
 .whisker-4 {
 
@@ -583,7 +628,9 @@ body {
 
   transform:
     rotate(5deg);
+
 }
+
 
 
 /* =====================================================
@@ -602,29 +649,41 @@ body {
 
   transition:
     transform .5s ease;
+
 }
+
 
 .paw-left {
+
   left: 65px;
+
 }
 
+
 .paw-right {
+
   right: 65px;
+
 }
+
 
 .cat-envelope.open .paw-left {
 
   transform:
     translateY(-18px)
     rotate(-8deg);
+
 }
+
 
 .cat-envelope.open .paw-right {
 
   transform:
     translateY(-18px)
     rotate(8deg);
+
 }
+
 
 
 /* =====================================================
@@ -650,12 +709,16 @@ body {
 
   transition:
     opacity 1s ease;
+
 }
+
 
 #flowerLayer.fade-out {
 
   opacity: 0;
+
 }
+
 
 .flower {
 
@@ -681,8 +744,8 @@ body {
   animation-delay:
     var(--delay);
 
-  user-select: none;
 }
+
 
 @keyframes flowerBurst {
 
@@ -694,10 +757,13 @@ body {
       translate(-50%, -50%)
       scale(.1)
       rotate(0deg);
+
   }
 
   15% {
+
     opacity: 1;
+
   }
 
   100% {
@@ -711,13 +777,27 @@ body {
       )
       scale(1)
       rotate(var(--rotate));
+
   }
+
 }
 
 
+
 /* =====================================================
-   IMAGE
+   IMAGE VIEWER
 ===================================================== */
+
+/*
+   QUAN TRỌNG:
+
+   Không dùng inset: 0 + margin:auto nữa.
+
+   Dùng left:50% + top:50%
+   để mobile luôn căn chính giữa.
+
+   Ảnh KHÔNG blur.
+*/
 
 #viewer {
 
@@ -726,6 +806,9 @@ body {
   left: 50%;
   top: 50%;
 
+  width: auto;
+  height: auto;
+
   max-width: 88vw;
   max-height: 78vh;
 
@@ -733,7 +816,7 @@ body {
 
   transform:
     translate(-50%, -50%)
-    scale(.94);
+    scale(.97);
 
   opacity: 0;
 
@@ -753,11 +836,17 @@ body {
     0 15px 50px
     rgba(110, 45, 80, .18);
 
+  /*
+     CHỈ fade + scale.
+     KHÔNG blur.
+  */
+
   transition:
     opacity .45s ease,
-    transform .55s ease,
-    filter .45s ease;
+    transform .45s ease;
+
 }
+
 
 #viewer.show {
 
@@ -766,11 +855,13 @@ body {
   transform:
     translate(-50%, -50%)
     scale(1);
+
 }
 
 
+
 /* =====================================================
-   IMAGE CAPTION
+   CAPTION
 ===================================================== */
 
 .image-caption {
@@ -795,8 +886,6 @@ body {
 
   font-weight: 500;
 
-  letter-spacing: .3px;
-
   opacity: 0;
 
   pointer-events: none;
@@ -806,7 +895,9 @@ body {
   transition:
     opacity .5s ease,
     transform .5s ease;
+
 }
+
 
 .image-caption.show {
 
@@ -815,47 +906,9 @@ body {
   transform:
     translateX(-50%)
     translateY(0);
+
 }
 
-
-/* =====================================================
-   DIFFERENT IMAGE EFFECTS
-===================================================== */
-
-#viewer.effect-1 {
-
-  filter:
-    blur(0);
-
-  transform:
-    translate(-50%, -50%)
-    scale(1.04);
-}
-
-#viewer.effect-2 {
-
-  transform:
-    translate(-50%, -50%)
-    translateX(25px)
-    scale(.98);
-}
-
-#viewer.effect-3 {
-
-  filter:
-    blur(4px);
-
-  transform:
-    translate(-50%, -50%)
-    scale(.97);
-}
-
-#viewer.effect-4 {
-
-  transform:
-    translate(-50%, -50%)
-    scale(1.06);
-}
 
 
 /* =====================================================
@@ -891,16 +944,14 @@ body {
 
   border-radius: 20px;
 
-  box-shadow:
-    0 20px 60px
-    rgba(90, 30, 70, .25);
-
   z-index: 50;
 
   transition:
     opacity .7s ease,
     transform .7s ease;
+
 }
+
 
 #videoViewer.video-show {
 
@@ -911,7 +962,9 @@ body {
   transform:
     translate(-50%, -50%)
     scale(1);
+
 }
+
 
 
 /* =====================================================
@@ -937,14 +990,18 @@ body {
   transition:
     opacity .8s ease,
     visibility .8s ease;
+
 }
+
 
 #videoFade.active {
 
   opacity: 1;
 
   visibility: visible;
+
 }
+
 
 
 /* =====================================================
@@ -971,7 +1028,9 @@ body {
   z-index: 80;
 
   opacity: 0;
+
 }
+
 
 .question-box.show {
 
@@ -980,7 +1039,9 @@ body {
     .9s
     ease
     forwards;
+
 }
+
 
 @keyframes questionAppear {
 
@@ -995,12 +1056,9 @@ body {
     opacity: 1;
 
   }
+
 }
 
-
-/* =====================================================
-   QUESTION CARD
-===================================================== */
 
 .question-card {
 
@@ -1033,7 +1091,9 @@ body {
     .15s
     ease
     forwards;
+
 }
+
 
 @keyframes questionCard {
 
@@ -1044,7 +1104,9 @@ body {
       scale(1);
 
   }
+
 }
+
 
 .butterfly {
 
@@ -1059,7 +1121,9 @@ body {
     3s
     ease-in-out
     infinite;
+
 }
+
 
 @keyframes butterflyFloat {
 
@@ -1079,14 +1143,14 @@ body {
       rotate(2deg);
 
   }
+
 }
+
 
 .question-text {
 
   margin:
-    8px
-    0
-    22px;
+    8px 0 22px;
 
   color: #713d53;
 
@@ -1096,34 +1160,8 @@ body {
 
   line-height: 1.5;
 
-  animation:
-    textAppear
-    .7s
-    .3s
-    ease
-    both;
 }
 
-@keyframes textAppear {
-
-  from {
-
-    opacity: 0;
-
-    transform:
-      translateY(8px);
-
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform:
-      translateY(0);
-
-  }
-}
 
 
 /* =====================================================
@@ -1137,15 +1175,16 @@ body {
   justify-content: center;
 
   gap: 14px;
+
 }
+
 
 .buttons button {
 
   min-width: 105px;
 
   padding:
-    11px
-    20px;
+    11px 20px;
 
   border: none;
 
@@ -1157,9 +1196,8 @@ body {
 
   cursor: pointer;
 
-  transition:
-    transform .2s ease;
 }
+
 
 #yesBtn {
 
@@ -1176,38 +1214,8 @@ body {
     0 8px 20px
     rgba(255, 95, 153, .25);
 
-  animation:
-    yesPulse
-    2.5s
-    1s
-    ease-in-out
-    infinite;
 }
 
-@keyframes yesPulse {
-
-  0%,
-  100% {
-
-    transform:
-      scale(1);
-
-  }
-
-  50% {
-
-    transform:
-      scale(1.04);
-
-  }
-}
-
-#yesBtn:hover {
-
-  transform:
-    translateY(-2px)
-    scale(1.03);
-}
 
 #noBtn {
 
@@ -1216,7 +1224,9 @@ body {
   color: #aaa;
 
   cursor: not-allowed;
+
 }
+
 
 
 /* =====================================================
@@ -1253,7 +1263,9 @@ body {
     finalAppear
     .8s
     ease;
+
 }
+
 
 @keyframes finalAppear {
 
@@ -1274,7 +1286,9 @@ body {
       scale(1);
 
   }
+
 }
+
 
 .final-box img {
 
@@ -1287,30 +1301,28 @@ body {
 
   margin-bottom: 20px;
 
-  filter:
-    drop-shadow(
-      0 12px 25px
-      rgba(140, 50, 90, .15)
-    );
 }
+
 
 .final-box p {
 
   max-width: 500px;
-
-  margin: 0;
 
   color: #713d53;
 
   font-size: 17px;
 
   line-height: 1.7;
+
 }
+
 
 .final-box b {
 
   color: #e85d91;
+
 }
+
 
 
 /* =====================================================
@@ -1319,11 +1331,13 @@ body {
 
 @media (max-width: 600px) {
 
+
   .hint {
 
     top: 11%;
 
     font-size: 16px;
+
   }
 
 
@@ -1331,32 +1345,55 @@ body {
 
     transform:
       scale(.9);
-  }
 
-
-  #viewer {
-
-    max-width: 92vw;
-
-    max-height: 72vh;
-
-    border-radius: 14px;
-  }
-
-
-  .image-caption {
-
-    bottom: 7%;
-
-    font-size: 15px;
   }
 
 
   /*
-    VIDEO FULL MOBILE
+     ẢNH MOBILE
+
+     Cố định tuyệt đối ở giữa.
+  */
+
+  #viewer {
+
+    left: 50%;
+    top: 50%;
+
+    width: auto;
+    height: auto;
+
+    max-width: 92vw;
+    max-height: 72vh;
+
+    margin: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(.97);
+
+    border-radius: 14px;
+
+  }
+
+
+  #viewer.show {
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+
+  }
+
+
+  /*
+     VIDEO MOBILE FULL MÀN HÌNH
   */
 
   #videoViewer {
+
+    left: 50%;
+    top: 50%;
 
     width: 100vw;
     height: 100vh;
@@ -1373,21 +1410,24 @@ body {
 
     object-fit: cover;
 
-    background: #000;
   }
 
 
   #videoViewer.video-show {
 
-    width: 100vw;
-    height: 100vh;
-
-    width: 100dvw;
-    height: 100dvh;
-
     transform:
       translate(-50%, -50%)
       scale(1);
+
+  }
+
+
+  .image-caption {
+
+    bottom: 7%;
+
+    font-size: 15px;
+
   }
 
 
@@ -1397,24 +1437,28 @@ body {
       25px
       20px
       28px;
+
   }
 
 
   .question-text {
 
     font-size: 18px;
+
   }
 
 
   .final-box {
 
     padding: 25px;
+
   }
 
 
   .final-box p {
 
     font-size: 16px;
+
   }
 
 }
